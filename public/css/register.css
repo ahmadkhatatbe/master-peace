@@ -1,0 +1,628 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto;
+background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(/images/IMG_0028.jpg);
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center;
+
+}
+.header{
+grid-column: 1/7;
+position: relative;
+display: grid;
+grid-template-columns: auto auto;
+justify-content: space-between;
+ background: -webkit-gradient(linear, left top, right top, from(#030051), to(#120087));
+    background: linear-gradient(to right, #000731, #001078,#0024b4);  text-align: center;
+height: 80px;
+
+}
+.logo{
+    padding-top: 20px;
+    padding-left: 40px;
+    color:#fac710 ;
+}
+/* user hover  */
+.usermain{
+  position: absolute;
+  background-color: black;
+  height: 100px;
+  width: 150px;
+  right: 100px;
+  font-weight: bold;
+  display: none;
+  z-index: 999;
+  border-radius: 5px;
+  
+}
+.logout{
+  height: 40px;
+  width: 150px;
+  background-color: black;
+  color: white;
+  border: none;
+    font-weight: bold;
+
+}
+.logout:hover{
+  color: black;
+background-color: #fac710;
+}
+.user a{
+  text-decoration: none;
+  list-style: none;
+  color: white;
+padding: 12px 50px;
+}
+.user a:hover{
+  color: black;
+background-color: #fac710;
+
+}
+.main-user:hover .usermain{
+ display: block;
+  transition:all 0.4s;
+}
+/* end user hover */
+.right-side{
+    display: flex;
+}
+.menu-container{
+    display: none;
+}
+.btns-header{
+    padding-top: 25px;
+    padding-right: 50px;
+}
+.btns-header button{
+padding: 15px 35px;
+}
+#check{
+    display: none;
+}
+.checkbtn {
+    display: none;
+    
+}
+.checkbtn img{
+
+    text-align: center;
+    padding-top: 30px;
+    padding-right: 20px;
+}
+#register{
+    background-color: #fac710;
+    font-weight: bold;
+     margin-left: 10px;
+    padding: 15px 35px;
+color: white;
+    border: none;
+    border-radius: 5px;
+
+}
+button a{
+ text-decoration: none;
+ color: black;
+}
+#signin a{
+    color: white;
+}
+#signin{
+    background-color: #2d55f0;
+  font-weight: bold;
+     margin-left: 10px;
+    padding: 15px 35px;
+color: white;
+    border: none;
+    border-radius: 5px;
+}
+.link{
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 20px;
+}
+.menu{
+    display: none;
+}
+
+/*////////////////// content/////////// */
+.label{
+       grid-column: 1/7;
+       color: white;
+       font-size: 40px;
+       font-weight: bold;
+       padding-left:120px ;
+       padding-top: 50px;
+       height: 100px;
+ 
+}
+
+.members{
+    grid-column: 1/7;
+  padding-left: 50px;
+  height: 350px;
+padding-top: 60px;
+}
+
+.member-label{
+    color: white;
+    font-weight: bold;
+    padding-left: 70px;
+    padding-bottom: 20px;
+    font-size: 20px;
+}
+.choices{
+  display: flex;
+      margin-left: 20px;
+      color: black;
+      line-height: 30px;
+      text-align: center;
+      position: relative;
+
+}
+.memberradio{
+    padding-top: 5px;
+    position: absolute;
+    padding-left: 20px;
+}
+.choices img{
+    padding-top: 50px;
+}
+.member{
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.864);
+   width: 200px;
+   height: 200px;
+    margin-left: 50px;
+    border: none;
+    border-radius: 10px;
+     
+}
+.member span{
+    display: block;
+}
+
+/*/////////////////////////////// section-two//////////////////////////// */
+
+.form{
+    grid-column: 1/7;
+    height: 450px;
+    padding-left: 120px;
+    padding-top: 20px; 
+     margin-bottom: 70px;
+}
+.form .form-main{
+        background-color: rgba(255, 255, 255, 0.871);
+        width:70%;
+        line-height: 20px;
+        height: 450px;
+        padding-left: 20px;
+        padding-top: 20px;
+      
+        position: relative;
+     border: none;
+     border-radius: 5px;
+
+}
+
+label{
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+label small{
+    font-size: 13px;
+    font-weight: normal;
+}
+.form-main .names{
+     width: 94.5%;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    margin-top: 17px;
+    
+    
+
+}
+.password{
+     height: 40px;
+     width: 94.5%;
+      border-radius: 5px;
+    border: none;
+   
+    margin-bottom: 15px;
+}
+.password_confirmation{
+      height: 40px;
+     width: 94.5%;
+      border-radius: 5px;
+    border: none;
+  
+    margin-bottom: 25px;
+}
+.form-main .email{
+    height: 40px;
+     width: 94.5%;
+      border-radius: 5px;
+    border: none;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.form-main input{
+    padding-left: 10px;
+
+    font-size: 20px;
+}
+.form-main bold{
+    color: #2d55f0;
+    font-weight: bolder;
+
+}
+.create{
+    position: absolute;
+    background-color: #fac710;
+    bottom: 20px;
+    right: 40px;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 15px !important;
+
+}
+
+
+
+
+
+.section-four {
+    grid-column: 1/7;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    color: white;
+    justify-content:space-around;
+    padding-top: 30px;
+    letter-spacing: 0.5px;
+    line-height: 30px;
+     font-size:22px;
+     background-color: black;
+     height: 300px;
+}
+.left-side-footer{
+      padding-top: 70px;
+
+     color: #fac710;
+  font-size: 20px;
+  text-align: center;
+  /* padding-top: 70px; */
+  
+
+}
+#link-footer {
+    grid-column: 1/6;
+    color: #fac710;
+    font-size: 25px;
+    text-align: start;
+}
+
+ .right-side-footer {
+    text-align: center;
+
+padding-left: 100px;
+ }
+ #link-footer{
+    padding-top: 15px;
+    padding-bottom: 20px;
+        color: #fac710;
+
+ }
+ .links-footer{
+    list-style: none;
+    text-align: start;
+ }
+ .link-footer a{
+        text-decoration: none;
+        color: white;
+        font-size: 17px;
+        
+
+ }
+ .link-footer a:hover{
+    color: #fac710;
+    transition: 0.4s;
+ }
+.sections-footer{
+    /* padding-top: 10px; */
+    /* padding-left: 100px; */
+    color: #fac710;
+ 
+}
+.section-footer{
+   list-style: none;
+   text-align: start;
+   
+
+}
+ #section-footer{
+    padding-bottom: 17px;
+
+ }
+.section-footer a{
+    color: white;
+    text-decoration: none;
+     font-size: 17px;
+}
+.section-footer a:hover{
+    color: #fac710;
+    transition: 0.4s;
+ }
+
+
+
+
+
+
+/* /////////////////tablet/////////////// /*/
+
+@media screen and (min-width:426px) and (max-width:768px) {
+
+.menu{
+    display: block;
+    position: fixed;
+    background-color: black;
+    height: 20%;
+    text-align: center;
+    width: 200px;
+    right: -100%;
+    top: 80px;
+ 
+   transition: all 0.5s;
+
+}
+.open-menu{
+    position: fixed;
+    background-color: black;
+    height: 19%;
+    text-align: center;
+    width: 200px;
+    right: 0;
+    top: 80px;
+   transition: all 0.5s;
+}
+
+.checkbtn { 
+    display: block;
+    position: absolute;
+   z-index: 999;
+   top: 0;
+    right: 0;
+   
+    
+}
+
+.btn--responsivebar{
+background-color: #fac710;
+height: 60px;
+width: 100%;
+font-size: 15px;
+font-weight: bold;
+
+}
+.form .form-main {
+    
+    width: 90%;
+ 
+    height: 350px;
+    
+      padding-right: 20px;
+  
+   
+}
+
+.btns-header{
+display: none;
+   
+}
+.btns-header button{
+padding: 12px 40px;
+}
+#check{
+    display: none;
+}
+
+
+.checkbtn img{
+position: fixed;
+right: 0;
+text-align: center;
+padding-top: 30px;
+padding-right: 20px;
+}
+#register{
+    background-color: #fac710;
+    font-weight: bold;
+    margin-right: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+
+}
+#signin{
+    background-color:#2d55f0;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 15px;
+    border: none;
+    border-radius: 5px;
+}
+
+
+ 
+
+.section-four {
+   
+    display: grid;
+    grid-template-columns: auto  auto ;
+    color: white; 
+    letter-spacing: 0.5px;
+    height: 600px;
+    font-size: 25px;
+      text-align: center;
+
+}
+.sections-footer {
+  text-align: center;
+    color: #fac710;
+}
+.left-side-footer {
+    grid-column: 1/3;
+    padding-top: 70px;
+    color: #fac710;
+    font-size: 20px;
+    text-align: center;
+    padding-top: 20px;
+}
+#link-footer {
+   
+    font-size: 22px;
+    
+}
+
+}
+/* /////////////////mobile/////////////// /*/
+
+@media screen and (max-width:426px) {
+
+.menu{
+    position: fixed;
+    top: 0px;
+    background-color: black;
+    height: 20%;
+    text-align: center;
+    width: 100%;
+    right: -100%;
+    top: 80px;
+ 
+    padding-top: 20px;
+   transition: all 0.5s;
+
+}
+.menu{
+    display: block;
+}
+.open-menu{
+    
+    position: fixed;
+    background-color: black;
+    height: 19%;
+    text-align: center;
+    width: 100%;
+    right: 0;
+    top: 80px;
+   transition: all 0.5s;
+}
+.choices {
+    display: flex;
+    margin-left: 20px;
+    color: black;
+    flex-direction: column;
+    
+    
+}
+.members{
+    text-align: center;
+}
+.member{
+    margin-top: 20px;
+}
+.form{
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-top: 200px;
+    margin-bottom: 80px;
+
+}
+.form .form-main {
+height: 400px;
+width: auto;
+
+}
+
+.checkbtn { 
+    display: block;
+    position: absolute;
+   z-index: 999;
+   top: 0;
+    right: 0;
+   
+    
+}
+
+.btn--responsivebar{
+background-color: #fac710;
+height: 60px;
+  width: 100%;
+  font-size: 15px;
+  font-weight: bold;
+    }
+
+.btns-header{
+display: none;
+   
+}
+.btns-header button{
+padding: 12px 40px;
+}
+#check{
+    display: none;
+}
+.logo{
+    padding-top: 25px;
+    font-size: 25px;
+}
+
+.label {
+    grid-column: 1/5;
+    color: white;
+    padding-top: 100px;
+    padding-bottom: 50px;
+    text-align: center;
+    font-size: 40px;
+        padding-left: 0;
+}
+
+.section-four {
+   
+    display: grid;
+    grid-template-columns: auto  auto ;
+    color: white; 
+    letter-spacing: 0.5px;
+    height: 700px;
+    font-size: 25px;
+      text-align: center;
+
+}
+.sections-footer {
+  text-align: center;
+    color: #fac710;
+}
+.left-side-footer {
+grid-column: 1/3;
+}
+#link-footer {
+   
+    font-size: 22px;
+    
+}
+
+
+
+}

@@ -1,0 +1,134 @@
+.subimage {
+    margin-top:20px;
+    height:200px;
+    
+    overflow:auto;
+    background-color:white;
+    scrollbar-base-color:gold;font-family:sans-serif;
+    
+}
+.subimage img{
+    padding: 0;
+}
+.box {
+    margin-top: 150px;
+    width: 110px;
+    height: 120px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.cardimage {
+    width: 560px;
+    height: 300px;
+    border-radius: 5px;
+}
+.cardimage img{
+ border-radius: 5px;
+ box-shadow: -2px -2px  5px  rgba(0, 0, 0, 0.244),2px 2px  5px  rgba(0, 0, 0, 0.244);}
+.cardimage-wrapper {
+    margin: 0 auto;
+}
+.cardimg {
+    width: 100%;
+    display: block;
+}
+.cardimg-display {
+    width: 100%;
+}
+.img-showcase {
+    display: flex;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+
+    transition: all 0.5s ease;
+}
+.img-showcase img {
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    background-clip: border-box;
+}
+.img-select {
+    display: flex;
+}
+.img-select img {
+    width: 100px;
+    height: 100px;
+}
+.img-item {
+    margin: 0.3rem;
+}
+.img-item:nth-child(1),
+.img-item:nth-child(2),
+.img-item:nth-child(3) {
+    margin-right: 0;
+}
+.img-item:hover {
+    opacity: 0.8;
+}
+.product-content {
+    padding: 2rem 1rem;
+}
+.product-title {
+    font-size: 3rem;
+    text-transform: capitalize;
+    font-weight: 700;
+    position: relative;
+    color: #12263a;
+    margin: 1rem 0;
+}
+
+@media screen and (min-width: 992px) {
+    .card {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1.5rem;
+    }
+    .card-wrapper {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .product-imgs {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .product-content {
+        padding-top: 0;
+    }
+}
+@media screen and (min-width:427px) and (max-width:768px) {
+ .cardimage {
+    margin: 20px;
+    width: 90%;
+    height: 300px;
+margin-bottom:450px;
+
+}
+.subimage{
+  
+    height:200px;
+    
+   
+}
+
+}
+@media screen and (max-width:426px)  {
+    .cardimage {
+        border-radius: 5px;
+    width: 380px;
+    height: 300px;
+margin-bottom:280px
+}
+  
+.img-select{
+    
+}
+.subimage{
+
+}
+}
+

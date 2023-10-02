@@ -1,0 +1,690 @@
+
+
+* {
+  margin: 0;
+  padding: 0;
+    box-sizing: border-box;
+
+}
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+ 
+ background: -webkit-gradient(linear, left top, right top, from(#191D88), to(#191D88));
+    background: linear-gradient(to right, #191D88, #191D88,#191D88);  text-align: center;
+height: fit-content;
+overflow: hidden;
+}
+.search-tablet{
+  display: none;
+}
+.left-side img{
+  margin-top: 20px;
+  width: 200px;
+  height: 50px;
+  
+}
+
+
+
+#search {
+height: 40px;
+padding: 10px;
+border-radius: 5px;
+border: none;
+
+}
+.responsive{
+  display: none;
+  background: black;
+  line-height: 0;
+  width:0 ;
+  height: 0;
+  
+}
+
+.links-responsive{
+ text-align: center;
+
+}
+
+
+
+.mid-side {
+margin-top: 12px;
+
+}
+.mid-side form {
+display: flex;
+
+}
+.main-btn-search-header{
+  margin-top: 10px;
+}
+#btn-search-header{
+  display: flex;
+margin-left: 7px;
+padding: 12px 20px;
+border: none;
+border-radius: 5px;
+border-radius: 5px;
+font-size: 15px;
+}
+/* user hover  */
+.usermain{
+  position: absolute;
+  background-color: black;
+  height: 100px;
+  width: 150px;
+  right: 100px;
+  font-weight: bold;
+  display: none;
+  z-index: 999;
+  border-radius: 5px;
+  
+}
+
+
+.header-form input{
+
+height: 40px;
+  width: 350px;
+  border: none;
+  border-radius: 5px;
+  padding-left: 10px;
+}
+
+.form input:hover{
+  color: black;
+background-color: #fac710;
+}
+.user a{
+  text-decoration: none;
+  list-style: none;
+  color: white;
+padding: 12px 50px;
+}
+.user a:hover{
+  color: black;
+background-color: #fac710;
+
+}
+.main-user:hover .usermain{
+ display: block;
+  transition:all 0.4s;
+}
+/* end user hover */
+
+
+.right-side button {
+  margin-top: 9px;
+
+}
+.checkbtn{
+ display: none;
+
+}
+#check{
+  display: none;
+
+}
+#sell a{
+
+text-decoration: none;
+}
+
+button {
+  background-color: #fac710;
+  font-size: 15px;
+  font-weight: bold;
+  color: black;
+ 
+}
+button a{
+ text-decoration: none;
+ color: black;
+}
+#signin {
+  background-color: #2d55f0;
+  font-weight: bold;
+     margin-left: 10px;
+    padding: 10px 25px;
+color: white;
+
+}
+#signin a{
+  color: white;
+
+}
+#register{
+    padding: 10px 25px;
+
+}
+.right-side{
+  margin-top: 16px;
+
+}
+.right-side button {
+  padding: 12px 20px;
+  border-radius: 5px;
+  border: none;
+  font-size: 15px;
+}
+.part-two {
+  background-color: black;
+  height: 45px;
+  display: flex;
+}
+.part-two .links {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 10px;
+  padding-left: 10px;
+    font-size: 17px;
+
+}
+
+
+.link {
+  list-style-type: none;
+  padding-left: 25px;
+}
+
+.link a {
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 10px;
+  padding: 11px 10px;
+  color: white;
+}
+.link a:hover {
+  background-color: #2d55f0;
+  
+  transition: 0.2s;
+}
+#sell-main{
+    position: relative;
+
+}
+#sell {
+  margin-top: 7px;
+list-style: none;
+background: #fac710;
+    padding: 7px 22px;
+  border-radius: 5px;
+  color: black;
+  font-weight: bold;
+  margin-left:15px ;}
+
+ 
+.drop li {
+line-height: 40px;
+ font-size: bold;
+   text-decoration: none;
+   list-style: none;
+   width: 100%;
+
+}
+.drop .down a{
+ color: #e6e6e6;
+  text-decoration: none;
+
+}
+.drop a:hover{
+  background-color: #fac710;
+  color: black;
+   padding-left: 25px;
+   padding-right: 25px;
+   padding-top: 10px;
+   padding-bottom: 10px;
+   
+     z-index: 999;
+
+
+
+}
+.drop{ 
+  display: none;
+  top: 35px;
+ left: 15px;
+background-color: #010101;
+  position: absolute;
+  color: white;
+  text-align: center;
+  z-index: 999;
+  height: 100px;
+width: 145px; 
+}
+
+
+
+
+
+
+
+
+
+#sell-main:hover .drop{
+  display: block;
+  transition:all 0.4s;
+
+}
+/* //////////////////////////End the header////////////////////////////// */
+
+
+@media screen and (min-width:427px) and (max-width:768px) {
+
+  header {
+  position: relative;
+  display: flex;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  
+}
+.left-side {
+  
+font-size: 35px;
+}
+.left-side h1 {
+  color: #fac710;
+  font-size: 18px;
+}
+.mid {
+    display: none;
+ 
+}
+.mid input {
+  display: none;
+}
+.right-side {
+  display:block;
+}
+.right-side button{
+  display: none;
+}
+.part-two .links{
+  font-size: 20px;
+} 
+.responsive{
+   display:block; 
+        position: fixed;
+       width: 50%;
+        height: 100%;
+        top: 0px;
+        left: -100%;
+        background-color: #010101;
+        text-align: center;
+        line-height: 70px;
+        transition:all 0.5s; 
+        color: white;
+         z-index: 999;
+      }
+      .responsive ul{
+        padding-top: 30px;
+      }
+       .responsive ul li{
+         padding: 10px 30px;
+       }
+      .responsive ul li:hover {
+       
+      background-color: #fac710;
+      color: #010101;
+      }
+      .responsive ul a{
+text-decoration: none;
+color: white;
+
+
+      }
+      
+      .open-menu{ 
+        font-size: 20px;
+         display:block; 
+        position: fixed;
+        width: 50%;
+        height: 100%;
+        top: 0px;
+            left: 0;
+
+        background-color: #010101;
+        text-align: left;
+        line-height: 70px;
+       transition:all 0.5s;  
+      }
+.checkbtn{
+  display: block;
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    background: black;
+    width: 50px;
+    height: 40px;
+    padding-top: 5px;
+    border-radius: 50px;
+}
+#check{
+  display: none;
+}
+
+.part-two{
+  display: flex;
+height: 50px;  
+ font-size: 15px;
+ justify-content: space-around;
+}
+#btn-search {
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-left: 2px;
+  border: none;
+}
+.links{
+ display: none;;
+}
+
+.search-tablet{
+  display:flex;
+  
+  padding-top: 7px;
+}
+#register-responsive{
+  background-color: black;
+  border: none;
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+  padding-left: 110px;
+    padding-right: 110px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 5px;
+    width: 42%;
+}
+#signin-responsive{
+font-size: 25px;
+  font-weight: bold;
+  padding-left: 110px;
+    padding-right: 110px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 5px;
+    width: 42%;
+
+}
+#search{
+  display: none;
+}
+#btn-search-header{
+  display: none;
+ 
+}
+.search-tablet input{
+  padding-left: 10px;
+width: 380px;
+    height: 38px;
+    border: none;
+border-radius: 5px;
+font-size: 15px;
+margin-left: 10px;
+}
+
+
+.right-side button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+}
+.links{
+  display: none;
+}
+#sell{
+  padding: 10px 50px;
+}
+.drop {
+    display: none;
+    height: 100px;
+    width:150px;
+}
+
+
+.link{
+  display: none;
+}
+.link .auction{
+  display: none;
+}
+.part-two .links {
+    display: none;
+    
+}
+/* ////////////////////////endheader////////////////////////// */
+
+
+}
+
+@media screen and (max-width:426px){
+
+
+  header {
+  position: relative;
+  display: flex;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  justify-content: space-between;
+  background-color: #1300a3;
+  text-align: center;
+  font-size: 30px;
+}
+.left-side {
+font-size: 35px;
+}
+.left-side h1 {
+  color: #fac710;
+  font-size: 18px;
+}
+.text-section-one {
+    font-size: 25px;
+    color: white;
+    font-weight: bold;
+    width: 70%;
+}
+.btn-register-section-one {
+    padding: 10px 40px;
+    margin-top: 50px;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+#btn-search {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+
+ 
+}
+#btn-search-header{
+  display: none;
+
+}
+.search-tablet input{
+  float: left;
+ 
+}
+#search{
+  display: none;
+  
+}
+.right-side {
+  display:block;
+}
+.right-side button{
+  display: none;
+}
+.part-two{
+  display: flex;
+  flex-wrap: wrap-reverse;
+}
+.part-two .links{
+  font-size: 20px;
+} 
+.responsive{
+   display:block; 
+        position: fixed;
+       width: 15%;
+        height: 100%;
+        top: 0px;
+        left: -100%;
+        background-color: #010101;
+        text-align: center;
+        line-height: 70px;
+        transition:all 0.5s; 
+        color: white;
+        z-index: 999;
+         
+      }
+      .responsive ul{
+        padding-top: 30px;
+      }
+       .responsive ul li{
+         padding: 10px 30px;
+       }
+      .responsive ul li:hover {
+       
+      background-color: #fac710;
+      color: #010101;
+      }
+      .responsive ul a{
+text-decoration: none;
+color: white;
+
+
+      }
+      
+      .open-menu{ 
+        font-size: 20px;
+         display:block; 
+        position: fixed;
+        width: 50%;
+        height: 100%;
+        top: 0px;
+            left: 0;
+
+        background-color: #010101;
+        text-align: left;
+        line-height: 70px;
+       transition:all 0.5s;  
+      }
+.checkbtn{
+  display: block;
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    background: black;
+    width: 50px;
+    height: 40px;
+    padding-top: 5px;
+    border-radius: 50px;
+}
+#check{
+  display: none;
+}
+
+.part-two{
+display: flex;
+   font-size: 15px;
+   height: 100px;
+     padding-top:17px;
+     padding-right: 15px;
+
+}
+
+.links{
+ display: none;
+}
+.part-two .links{
+ display: none;
+  
+}
+.search-tablet{
+  display:flex;
+width: 380px; 
+  
+}
+#register-responsive{
+  background-color: black;
+  border: none;
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+    padding-right: 110px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 5px;
+    width: 42%;
+}
+.drop{
+  width: 100%;
+
+}
+
+#signin-responsive{
+font-size: 25px;
+  font-weight: bold;
+    padding-right: 110px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 5px;
+    width: 42%;
+
+}
+.search-tablet input{
+ margin-left: 15px;
+  padding-left: 15px;
+    height: 38px;
+border: none;
+border-radius: 5px;
+font-size: 15px;
+width: 380px;
+}
+#btn-search {
+    font-size: 12px;
+    margin-left: 5px;
+}
+.left-side input{
+display: none;
+}
+
+.right-side button {
+  padding: 10px 30px;
+  border-radius: 5px;
+  border: none;
+}
+.links{
+  display: none;
+}
+#sell {
+    margin-top: 0px;
+    height: 35px;
+    width: 395px;
+    font-size:15px;
+    text-align: center;
+   
+    position: relative;
+    list-style: none;
+}
+
+
+
+.link{
+  display: none;
+}
+.link .auction{
+  display: none;
+}
+/* ////////////////////////endheader////////////////////////// */
+
+
+}
