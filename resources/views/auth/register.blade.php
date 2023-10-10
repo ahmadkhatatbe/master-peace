@@ -1,4 +1,4 @@
-@extends('layouts.masterparttow')
+@extends('layouts.master')
 
 <link rel="stylesheet" href="{{ url('/css/register.css') }}">
 @section('content')

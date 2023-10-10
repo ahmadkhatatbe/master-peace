@@ -1,7 +1,6 @@
 @extends('layouts.master')
 @section('title','contact')
 
-
     <link rel="stylesheet" href="{{url('/css/contactus.css')}}">
    
 

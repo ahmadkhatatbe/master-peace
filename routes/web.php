@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuctionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\RegisteredUserController;
@@ -11,7 +12,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\VehicleController;
 use App\Http\Livewire\BiddingComponent;
-
 use App\Http\Controllers\Controller;
 
 
@@ -153,6 +153,13 @@ Route::get('sellers', [Controller::class, 'seller'])->name('sellers');
 // /////////((ADMIN))////(users, update users,delete users, ) //////////
 Route::resource('user', UsersController::class);
 
+// /////////////////////////////////
+///////////(auction)//////////////
+Route::resource('auction', AuctionController::class);
+
+    Route::get('addauction', function () {
+        return view('admindashboard/pages/addauction');
+    })->name('addauction');
 
 });
 // //////////////////////////////////////////////////////////////////////

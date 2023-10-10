@@ -1,4 +1,4 @@
-@extends('layouts.masterparttow')
+@extends('layouts.master')
  @section('title','about')
 
     <link rel="stylesheet" href="{{url('/css/aboutus.css')}}">

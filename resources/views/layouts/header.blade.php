@@ -43,7 +43,7 @@
                     <div class="usermain">
                         <li class="user"><a href="{{ route('profile.edit') }}">Profile</a> </li>
                         <li class="user">
-                            <form class="form" method="POST" action="{{ route('logout') }}">
+                            <form class="formheader" method="POST" action="{{ route('logout') }}">
                                 @csrf
 
                                 <input type="submit" value="LogOut">

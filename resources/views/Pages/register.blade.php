@@ -1,7 +1,15 @@
-@extends('layouts.master')
+   
 
+   @extends('layouts.master')
+   <!-- start-header -->
+          
 <link rel="stylesheet" href="{{ url('/css/register.css') }}">
-@section('content')
+
+   @section('title','register')
+
+    
+            <!-- start-section-one -->
+            @section('content')
     <!--/////////////////// section-one//////////////////// -->
 
     <div class="label">
@@ -70,6 +78,4 @@
 
     <script src="{{url('./javascript/register')) }}"></script>
 @endsection
-</body>
 
-</html>

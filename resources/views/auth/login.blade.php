@@ -1,6 +1,6 @@
 
     
-   @extends('layouts.masterparttow')
+   @extends('layouts.master')
 @section('title','siginin')
 
 @section('content') 

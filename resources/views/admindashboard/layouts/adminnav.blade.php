@@ -73,7 +73,10 @@
                                     Current Vehicles
                                 </a>
 
-
+  <a href="{{ route('auction.index') }}" role="menuitem"
+                                    class="block p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:text-light dark:hover:text-light hover:text-gray-700">
+                                    Auction
+                                </a>
                             </div>
                         </div>
 
@@ -452,6 +455,10 @@
                                     <a href="{{ route('add.create') }}" role="menuitem"
                                         class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700">
                                         Current Vehicles </a>
+                                        <a href="{{ route('auction.index') }}" role="menuitem"
+                                        class="block p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:text-light dark:hover:text-light hover:text-gray-700">
+                                        Auction
+                                    </a>
                                 </div>
                             </div>
 

@@ -4,146 +4,31 @@
     box-sizing: border-box;
 }
 body{
-    display: grid;
-grid-template-columns: auto auto auto auto;
 background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(/images/IMG_0028.jpg);
 background-repeat: no-repeat;
 background-size: cover;
 background-position: center;
-height: 1500px;
 }
-.header{
-    grid-column: 1/5;
-    position: relative;
-    display: grid;
-grid-template-columns: auto auto;
-justify-content: space-between;
- background: -webkit-gradient(linear, left top, right top, from(#030051), to(#120087));
-    background: linear-gradient(to right, #000731, #001078,#0024b4);  text-align: center;
-height: 80px;
 
-}
-.logo{
-    padding-top: 20px;
-    padding-left: 40px;
-    color:#fac710 ;
-}
-.right-side{
-    display: flex;
-}
-.menu-container{
-    display: none;
-}
-.btns-header{
-    padding-top: 25px;
-    padding-right: 50px;
-}
-.btns-header button{
-padding: 12px 40px;
-}
-#check{
-    display: none;
-}
-.checkbtn {
-    display: none;
-    
-}
-.checkbtn img{
 
-    text-align: center;
-    padding-top: 30px;
-    padding-right: 20px;
-}
-#register{
-    background-color: #fac710;
-    font-weight: bold;
-     margin-left: 10px;
-    padding: 15px 35px;
-color: white;
-    border: none;
-    border-radius: 5px;
 
-}
-button a{
- text-decoration: none;
- color: black;
-}
-#signin a{
-    color: white;
-}
-#signin{
-    background-color: #2d55f0;
-  font-weight: bold;
-     margin-left: 10px;
-    padding: 15px 35px;
-color: white;
-    border: none;
-    border-radius: 5px;
-}
-/* user hover  */
-.usermain{
-  position: absolute;
-  background-color: black;
-  height: 100px;
-  width: 150px;
-  right: 100px;
-  font-weight: bold;
-  display: none;
-  z-index: 999;
-  border-radius: 5px;
-  
-}
-.logout{
-  height: 40px;
-  width: 150px;
-  background-color: black;
-  color: white;
-  border: none;
-    font-weight: bold;
-
-}
-.logout:hover{
-  color: black;
-background-color: #fac710;
-}
-.user a{
-  text-decoration: none;
-  list-style: none;
-  color: white;
-padding: 12px 50px;
-}
-.user a:hover{
-  color: black;
-background-color: #fac710;
-
-}
-.main-user:hover .usermain{
- display: block;
-  transition:all 0.4s;
-}
-/* end user hover */
-.menu{
-    display: none;
-}
 .label{
-    grid-column: 1/5;
+    padding-top: 50px;
     color: white;
-    padding-top: 100px;
-    padding-bottom: 50px;
-padding-left: 22%;
+   text-align: center;
     font-size: 40px;
 }
 
 .container{
-    grid-column: 1/5;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
-    height: 100%;
     width: auto;
     line-height: 50px;
-    padding-bottom: 200px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    
 
 color: black;
 }
@@ -154,8 +39,7 @@ color: black;
     padding-top: 30px;
 padding-left: 50px;
 padding-right: 50px;
-height: 600px; 
-margin-bottom: 80px;   
+height: 70vh; 
 
 }
 form{}

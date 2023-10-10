@@ -331,7 +331,7 @@
         </div>
     </div>
     </div>
-    <div class="container">
+    <div class="container ">
         <div class="name-similar">
             <h3>View Similar Vehicle</h3>
         </div>

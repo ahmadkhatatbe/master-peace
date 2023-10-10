@@ -20,21 +20,42 @@ class SearchController extends Controller
      */
     public function index(Request $request)
     {
-        // search for a vehicle 
+        // Get the search query from the request
+        $searchQuery = $request->input('search');
 
-        if ($request->filled('search')) {
+        // Initialize query builder for vehicles
+        $query = Vehicle::query();
 
-            $vehicles = Vehicle::search($request->search)->get();
-            $bids = Bid::get()->all();
+        // Check if a search query is provided
+        if ($searchQuery) {
+            // Split the search query into words
+            $keywords = explode(' ', $searchQuery);
 
+            // Loop through the keywords and add conditions to the query
+          
 
-
-
-        } else {
-            $vehicles = Vehicle::get();
+            // Use an AND condition between the keyword searches
+            $query->where(function ($q) use ($keywords) {
+                foreach ($keywords as $keyword) {
+                    $q->orWhere(function ($subQuery) use ($keyword) {
+                        $subQuery->where('make', 'LIKE', "%$keyword%")
+                            ->orWhere('model', 'LIKE', "%$keyword%")
+                            ->orWhere('year', 'LIKE', "%$keyword%");
+                    });
+                }
+            });
         }
+
+        // Execute the query to get the results
+        $vehicles = $query->get();
+
+        // Get all bids
+        $bids = Bid::all();
+
         return view('pages/categery', compact('vehicles', 'bids'));
     }
+
+
 
     public function single($id)
     { // go to the single page through this method with array 

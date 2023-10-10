@@ -4,137 +4,16 @@
     box-sizing: border-box;
 }
 body{
-    display: grid;
-    grid-template-columns: auto auto auto auto auto auto;
+ 
 background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(/images/IMG_0028.jpg);
 background-repeat: no-repeat;
 background-size: cover;
 background-position: center;
 
 }
-.header{
-grid-column: 1/7;
-position: relative;
-display: grid;
-grid-template-columns: auto auto;
-justify-content: space-between;
- background: -webkit-gradient(linear, left top, right top, from(#030051), to(#120087));
-    background: linear-gradient(to right, #000731, #001078,#0024b4);  text-align: center;
-height: 80px;
-
-}
-.logo{
-    padding-top: 20px;
-    padding-left: 40px;
-    color:#fac710 ;
-}
-/* user hover  */
-.usermain{
-  position: absolute;
-  background-color: black;
-  height: 100px;
-  width: 150px;
-  right: 100px;
-  font-weight: bold;
-  display: none;
-  z-index: 999;
-  border-radius: 5px;
-  
-}
-.logout{
-  height: 40px;
-  width: 150px;
-  background-color: black;
-  color: white;
-  border: none;
-    font-weight: bold;
-
-}
-.logout:hover{
-  color: black;
-background-color: #fac710;
-}
-.user a{
-  text-decoration: none;
-  list-style: none;
-  color: white;
-padding: 12px 50px;
-}
-.user a:hover{
-  color: black;
-background-color: #fac710;
-
-}
-.main-user:hover .usermain{
- display: block;
-  transition:all 0.4s;
-}
-/* end user hover */
-.right-side{
-    display: flex;
-}
-.menu-container{
-    display: none;
-}
-.btns-header{
-    padding-top: 25px;
-    padding-right: 50px;
-}
-.btns-header button{
-padding: 15px 35px;
-}
-#check{
-    display: none;
-}
-.checkbtn {
-    display: none;
-    
-}
-.checkbtn img{
-
-    text-align: center;
-    padding-top: 30px;
-    padding-right: 20px;
-}
-#register{
-    background-color: #fac710;
-    font-weight: bold;
-     margin-left: 10px;
-    padding: 15px 35px;
-color: white;
-    border: none;
-    border-radius: 5px;
-
-}
-button a{
- text-decoration: none;
- color: black;
-}
-#signin a{
-    color: white;
-}
-#signin{
-    background-color: #2d55f0;
-  font-weight: bold;
-     margin-left: 10px;
-    padding: 15px 35px;
-color: white;
-    border: none;
-    border-radius: 5px;
-}
-.link{
-    color: white;
-    font-weight: bold;
-    text-decoration: none;
-    font-size: 20px;
-}
-.menu{
-    display: none;
-}
 
 /*////////////////// content/////////// */
 .label{
-       grid-column: 1/7;
        color: white;
        font-size: 40px;
        font-weight: bold;
@@ -145,7 +24,6 @@ color: white;
 }
 
 .members{
-    grid-column: 1/7;
   padding-left: 50px;
   height: 350px;
 padding-top: 60px;
@@ -192,15 +70,14 @@ padding-top: 60px;
 /*/////////////////////////////// section-two//////////////////////////// */
 
 .form{
-    grid-column: 1/7;
-    height: 450px;
+    height: auto;
     padding-left: 120px;
     padding-top: 20px; 
      margin-bottom: 70px;
 }
 .form .form-main{
         background-color: rgba(255, 255, 255, 0.871);
-        width:70%;
+        width:50%;
         line-height: 20px;
         height: 450px;
         padding-left: 20px;
