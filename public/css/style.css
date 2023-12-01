@@ -1,7 +1,8 @@
+
 .subimage {
     margin-top:20px;
     height:200px;
-    
+    width: 515px;
     overflow:auto;
     background-color:white;
     scrollbar-base-color:gold;font-family:sans-serif;
@@ -29,22 +30,22 @@
     margin: 0 auto;
 }
 .cardimg {
-    width: 100%;
+    width: 90%;
     display: block;
 }
 .cardimg-display {
-    width: 100%;
+    width: 560;
 }
 .img-showcase {
     display: flex;
-    width: 100%;
+    width: 90%;
     height: 300px;
     overflow: hidden;
 
     transition: all 0.5s ease;
 }
 .img-showcase img {
-    width: 100%;
+    width: 80%;
     background-position: center;
     background-size: cover;
     background-clip: border-box;
@@ -78,6 +79,40 @@
     color: #12263a;
     margin: 1rem 0;
 }
+
+@media screen and (max-width:1054px)  {
+ .left{
+    height: fit-content;
+    margin-bottom: 350px;
+ }
+}
+@media screen and (max-width:768px)  {
+ .left{
+    width: 100%;
+    height: fit-content;
+    margin-bottom: 10px;
+ }
+
+.cardimage {
+    width:100%;
+    height: 300px;
+    border-radius: 5px;
+}
+.cardimg{
+    width: 88vw;
+}
+ .subimage {
+    margin-top:20px;
+    height:200px;
+    width:100%;
+    overflow:auto;
+    background-color:white;
+    scrollbar-base-color:gold;font-family:sans-serif;
+    
+}
+}
+
+
 
 @media screen and (min-width: 992px) {
     .card {
@@ -123,12 +158,51 @@ margin-bottom:450px;
     height: 300px;
 margin-bottom:280px
 }
+
+.cardimg-display{
+    width: auto;
+}
   
 .img-select{
     
 }
 .subimage{
 
+}
+}
+@media screen and (max-width:320px)  {
+    .cardimage {
+    margin: 20px;
+    width: auto;
+    height: 300px;
+margin-bottom:150px;
+
+}
+.subimage{
+  
+    height:200px;
+    
+   
+}
+    .mid{
+        font-size: 10px;
+    }
+    .mid table{
+        font-size: 10px;
+    }
+    .vehiclecard {
+    width: auto;
+    background-color: white;
+    margin: 10px;
+    height: 500px;
+    border-radius: 5px;
+    font-size: 20px;
+    box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.244), 2px 2px 5px rgba(0, 0, 0, 0.244);
+}
+.vehiclecard img {
+    width: 300;
+    height: 300px;
+    border-radius: 5px;
 }
 }
 

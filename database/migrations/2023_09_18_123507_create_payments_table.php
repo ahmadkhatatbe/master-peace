@@ -14,15 +14,14 @@ return new class extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('auction_id');
             $table->string('user_name');
             $table->string('user_email');
             $table->float('amount', 10, 2);
             $table->string('currency');
             $table->string('payment_status');
+            $table->string('expiration_date');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('auction_id')->references('id')->on('auctions');
-            $table->timestamps();
+
         });
     }
 

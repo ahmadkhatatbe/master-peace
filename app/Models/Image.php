@@ -16,6 +16,10 @@ class Image extends Model
 
     public function vehicle()
     {
-        return $this->belongsTo(Vehicle::class);
+        return $this->belongsToMany(Vehicle::class);
+    }
+    public function auctionParticipation()
+    {
+        return $this->belongsTo(AuctionParticipants::class);
     }
 }

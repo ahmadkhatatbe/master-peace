@@ -8,8 +8,10 @@ use App\Models\Bid;
 use App\Models\Image;
 use App\Models\Payment;
 use App\Models\Vehicle;
+use DB;
 use File;
 use Illuminate\Http\Request;
+use Livewire\Features\SupportConsoleCommands\Commands\MakeCommand;
 
 class SearchController extends Controller
 {
@@ -18,39 +20,48 @@ class SearchController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function categorypage()
+    {
+
+        return view('pages/categery');
+    }
     public function index(Request $request)
     {
-        // Get the search query from the request
-        $searchQuery = $request->input('search');
+        $bids = Bid::all();
+        $search = $request->input('search');
+        $make = $request->input('make');
+        $year = $request->input('year');
+        $color = $request->input('color');
+        $odometer = $request->input('odometer');
+        $title = $request->input('title');
 
-        // Initialize query builder for vehicles
-        $query = Vehicle::query();
+        // Search logic
+        $query = Vehicle::query()->with('images');
 
-        // Check if a search query is provided
-        if ($searchQuery) {
-            // Split the search query into words
-            $keywords = explode(' ', $searchQuery);
-
-            // Loop through the keywords and add conditions to the query
-          
-
-            // Use an AND condition between the keyword searches
-            $query->where(function ($q) use ($keywords) {
-                foreach ($keywords as $keyword) {
-                    $q->orWhere(function ($subQuery) use ($keyword) {
-                        $subQuery->where('make', 'LIKE', "%$keyword%")
-                            ->orWhere('model', 'LIKE', "%$keyword%")
-                            ->orWhere('year', 'LIKE', "%$keyword%");
-                    });
-                }
-            });
+        if ($search) {
+            $query->where('make', 'LIKE', "%$search%")
+                ->orWhere('year', 'LIKE', "%$search%");
         }
 
-        // Execute the query to get the results
-        $vehicles = $query->get();
+        // Filter logic
+        $query->when($make, function ($query, $make) {
+            return $query->where('make', $make);
+        })
+            ->when($year, function ($query, $year) {
+                return $query->where('year', $year);
+            })
+            ->when($color, function ($query, $color) {
+                return $query->where('color', $color);
+            })
+            ->when($odometer, function ($query, $odometer) {
+                return $query->where('mileage', '<=', $odometer);
+            })
+            ->when($title, function ($query, $title) {
+            return $query->where('title_code', $title);
+        });
 
-        // Get all bids
-        $bids = Bid::all();
+        $vehicles = $query->paginate(5); // Adjust the number of records per page as needed
+
 
         return view('pages/categery', compact('vehicles', 'bids'));
     }
@@ -59,14 +70,17 @@ class SearchController extends Controller
 
     public function single($id)
     { // go to the single page through this method with array 
-        $bids = Bid::where('vehicle_id', $id)->get()->all();
-        $info = Vehicle::where('id', $id)->get()->all();
+        $bids = Bid::where('vehicle_id', $id)->sum('amount');
+        $info = Vehicle::where('id', $id)->with('images')->first();
+       
         $auctions = Auction::get()->all();
         $participants = AuctionParticipants::get()->all();
-        $payments = Payment::get()->all();
-        $vehicles = Vehicle::get()->all();
+        $payments = Payment::where('user_id',$id)->get()->all();
+        $vehicles = Vehicle::where('make', '=', $info->make)->with('images')
+    ->get();
 
-        $vehicles = Vehicle::get();
+
+       
 
 
 
@@ -77,7 +91,7 @@ class SearchController extends Controller
 
 
 
-        return view('Pages.subcategery', compact('info', 'bids', 'auctions', 'participants', 'payments', 'images'));
+        return view('Pages.subcategery', compact('info', 'bids', 'auctions', 'payments', 'images','vehicles'));
 
     }
 }

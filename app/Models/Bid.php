@@ -13,7 +13,6 @@ class Bid extends Model
         'user_id',
         'vehicle_id',
         'amount',
-        'winstatus',
         'bidtime',
     ];
 

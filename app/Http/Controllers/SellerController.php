@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Auction;
 use App\Models\Image;
 use App\Models\Vehicle;
 use App\Models\User;
@@ -46,8 +47,8 @@ class SellerController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        return view('seller/addvehicleseller');
+    {    $auctions=Auction::get()->all();
+        return view('seller/addvehicleseller',compact('auctions'));
         //
     }
 
@@ -71,7 +72,9 @@ class SellerController extends Controller
             'mileage' => $request->mileage,
             'current_bid' => $request->current_bid,
             'buy_now_price' => $request->buy_now_price,
-            'auction_id' => 1
+            'auction_id' => $request->auction_id,
+            'target' => $request->target
+
 
 
 
@@ -149,6 +152,9 @@ class SellerController extends Controller
         $vehicles->mileage = $request->mileage;
         $vehicles->current_bid = $request->current_bid;
         $vehicles->buy_now_price = $request->buy_now_price;
+        $vehicles->target = $request->target;
+        $vehicles->auction_id = $request->auction_id;
+
 
         $vehicles->save();
 

@@ -22,12 +22,11 @@
         <div class="mid-side">
             <form action="{{ route('search') }}" method="get" class="header-form">
                 <div id="search">
-                 <input type="search" name="search"
-                    placeholder="Search by Make,and Vin,and Other....">
+                    <input type="search" name="search" placeholder="Search by Make,and Vin,and Other....">
                 </div>
-                    <div class="main-btn-search-header">
-                <button type="submit"id="btn-search-header">Search Inventory</button>
-            </div>
+                <div class="main-btn-search-header">
+                    <button type="submit"id="btn-search-header">Search Inventory</button>
+                </div>
             </form>
         </div>
 
@@ -37,19 +36,40 @@
 
 
             @if (Auth::check())
+
+            @if(Auth::user()->role!='guest')
+
+           
                 <div class="main-user">
                     <span class="userimg"><img src="{{ url('/images/user.png') }}" alt=""><img
                             src="{{ url('/images/caret-down.png') }}" alt="" srcset=""></span>
                     <div class="usermain">
-                        <li class="user"><a href="{{ route('profile.edit') }}">Profile</a> </li>
+                        @if (Auth::user()->role!='seller')
+<li class="user"><a href="{{ route('update_seller') }}">BecomeSeller</a> </li> 
+                      
+    
+@endif
+                        <li class="user"><a href="{{ route('profile.edit') }}">Profile</a> </li> 
+                      
                         <li class="user">
                             <form class="formheader" method="POST" action="{{ route('logout') }}">
                                 @csrf
 
-                                <input type="submit" value="LogOut">
+                                <input class="logout" type="submit" value="LogOut">
 
                             </form>
-                        </li>
+                        </li>  
+                        @else
+                        <li class="user"><a href="{{ route('registertow') }}">Active Account</a> </li> 
+                         <li class="user">
+                            <form class="formheader" method="POST" action="{{ route('logout') }}">
+                                @csrf
+
+                                <input class="logout" type="submit" value="LogOut">
+
+                            </form>
+                        </li>  
+@endif
 
                     </div>
                 </div>
@@ -76,7 +96,19 @@
                     <li class="link-responsive" id="auction"><a href="{{ route('contact') }}"> Contact </a></li>
                     <li class="link-responsive"><a href=""> How It works </a></li>
                     <li class="link-responsive"><a href=""> Inventory </a></li>
-                    <li class="link-responsive" id="auction"><a href=""> Auction </a></li>
+@auth
+    
+
+                    @if ($AuctionParticipantsHeader->isNotEmpty())
+                        <li class="link" id="auction"><a
+                                href="{{ route('auction', $AuctionParticipantsHeader[0]->vehicle_id) }}"> Auction </a>
+                        </li>
+                    @else
+                        <li class="link" id="auction"><a href="#"> Auction </a></li>
+                    @endif
+                    @endauth
+                    <li class="link"><a href="{{ route('services') }}"> Services&Support </a></li>
+
                     <li class="link-responsive"><a href="{{ route('services') }}"> Services&Support </a></li>
                     <li class="link-responsive"id="sell-responsive"><a href=""> Sell Your Vehicles </a></li>
                     <li class="link-responsive"><a href="{{ route('register') }}">register</a></li>
@@ -94,13 +126,22 @@
             <li class="link" id="auction"><a href="{{ route('contact') }}"> Contact </a></li>
             <li class="link"><a href=""> How It works </a></li>
             <li class="link"><a href=""> Inventory </a></li>
-            <li class="link" id="auction"><a href=""> Auction </a></li>
+            @auth
+                
+           
+            @if ($AuctionParticipantsHeader->isNotEmpty())
+                <li class="link" id="auction"><a
+                        href="{{ route('auction', $AuctionParticipantsHeader[0]->vehicle_id) }}"> Auction </a></li>
+            @else
+                <li class="link" id="auction"><a href="#"> Auction </a></li>
+            @endif 
+            @endauth
             <li class="link"><a href="{{ route('services') }}"> Services&Support </a></li>
 
         </ul>
         <div id="sell-main">
-            <p id="sell"><span>Sell Your Car</span> <img src="{{ url('/images/caret-down.png') }}" alt=""
-                    srcset=""></p>
+            <p id="sell"><span>Sell Your Car</span> <img src="{{ url('/images/caret-down.png') }}"
+                    alt="" srcset=""></p>
             <div class="drop">
                 @if (!Auth::check())
 
@@ -109,7 +150,7 @@
                     <li class="down"> <a href="login">For Individual</a></li>
                     <li class="down"><a href="login"> For Dealers </a></li>
                 @else
-                    @if (Auth::user()->role == 'Seller')
+                    @if (Auth::user()->role == 'seller')
                         <li class="down"> <a href="{{ route('seller.index') }}">For Individual</a></li>
                         <li class="down"><a href="{{ route('seller.index') }}"> For Dealers </a></li>
                     @else
@@ -128,5 +169,3 @@
         </div>
     </div>
     <!-- /////////////////////////////////end header/////////////////////////////////////// -->
-
-

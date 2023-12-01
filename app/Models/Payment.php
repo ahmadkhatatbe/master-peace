@@ -10,7 +10,6 @@ class Payment extends Model
     use HasFactory;
     protected $fillable = [
         'user_id',
-        'auction_id',
         'amount',
         'payment_status',
     ];
@@ -20,8 +19,5 @@ class Payment extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function auction()
-    {
-        return $this->belongsTo(Auction::class);
-    }
+  
 }

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AuctionParticipants;
+use App\Models\Bid;
+use App\Models\Payment;
 use App\Models\User;
 use App\Models\Vehicle;
 use Hash;
@@ -72,8 +75,10 @@ class UsersController extends Controller
     }
     // delete the user by user admin dashboard
     public function destroy($id)
-    {        Vehicle::destroy('user_id',$id);
-
+    {   Vehicle::destroy('user_id',$id);
+        Payment::where('user_id',$id)->delete();
+        Bid::where('user_id', $id)->delete();
+        AuctionParticipants::where('user_id', $id)->delete();
         User::destroy($id);
 
         return redirect()->route('user.index');

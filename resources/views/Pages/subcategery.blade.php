@@ -4,10 +4,11 @@
 
 <link rel="stylesheet" href="{{ url('/css/subcategery.css') }}">
 <link rel="stylesheet" href="{{ url('/css/style.css') }}">
-
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
     integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
     crossorigin="anonymous" />
+    
 
 
 
@@ -16,9 +17,9 @@
 
     </div>
     <div class="label">
-        @foreach ($info as $subinfo)
-            <h1>{{ $subinfo->make }} {{ $subinfo->model }} {{ $subinfo->year }} </h1>
-        @endforeach
+       
+            <h1>{{ $info->make }} {{ $info->model }} {{ $info->year }} </h1>
+        
     </div>
 
     <div class="container">
@@ -38,14 +39,14 @@
                         <div class="product-imgs">
                             <div class="cardimg-display">
 
-                                <img src="{{ asset($images[0]->filename) }}" alt="Vehicle Image" class="cardimg"
+                                <img src="{{ asset($info->images[0]->filename) }}" alt="Vehicle Image" class="cardimg"
                                     id="showcase-image" width="100%">
 
                             </div>
                         </div>
                         <div class="subimage">
                             <div class="img-select"style="display:flex;flex-wrap:wrap">
-                                @foreach ($images as $image)
+                                @foreach ($info->images as $image)
                                     <div class="img-item">
                                         <a href="#" data-src="{{ asset($image->filename) }}">
                                             <img class="cardimg-thumbnail" src="{{ asset($image->filename) }}"
@@ -98,36 +99,36 @@
                             </thead>
                             <tbody>
 
-                                @foreach ($info as $subinfo)
+                              
                                     <tr>
-                                        <td>#{{ $subinfo->id }}</td>
+                                        <td>#{{ $info->id }}</td>
                                     </tr>
                                     <tr>
-                                        <td>{{ $subinfo->vin }}</td>
+                                        <td>{{ $info->vin }}</td>
                                     </tr>
                                     <tr>
-                                        <td> {{ $subinfo->mileage }} mi (ACTUAL)</td>
+                                        <td> {{ $info->mileage }} mi (ACTUAL)</td>
                                     </tr>
                                     <tr>
-                                        <td>{{ $subinfo->title_code }}</td>
+                                        <td>{{ $info->title_code }}</td>
                                     </tr>
                                     <tr>
                                         <td>Yes</td>
                                     </tr>
                                     <tr>
-                                        <td>${{ $subinfo->retail_value }} JD</td>
+                                        <td>${{ $info->retail_value }} JD</td>
                                     </tr>
                                     <tr>
-                                        <td>{{ $subinfo->primary_damage }}</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>{{ $subinfo->secondary_damage }} </td>
-
+                                        <td>{{ $info->primary_damage }}</td>
                                     </tr>
 
                                     <tr>
-                                        <td>{{ $subinfo->color }}</td>
+                                        <td>{{ $info->secondary_damage }} </td>
+
+                                    </tr>
+
+                                    <tr>
+                                        <td>{{ $info->color }}</td>
                                     </tr>
                             </tbody>
                         </table>
@@ -163,20 +164,7 @@
                     <div class="content-bid">
                         <table class="table-right">
                             <thead>
-
-                                {{-- @php
-                                         foreach ($participants as $participant ) {
-                                            foreach ($auctions as $auction) {
-                                                if ($participant['auction_id'] === $auction->['id']) {
-                                                    $status=$auction['status'];
-                                                 $startdate=$auction['start_datetime'];
-                                                 $startdate=$auction['start_datetime'];
-                                                 $enddate=$auction['end_datetime'];
-                                                }
-                                            }
-                                         }
-                                     @endphp --}}
-                                {{-- for compare between the auction_id in table auction and the table vehicles --}}
+{{-- 
                                 @php
                                     foreach ($auctions as $auction) {
                                         if ($auction['id'] == $subinfo->auction_id) {
@@ -198,7 +186,7 @@
                                         }
                                     }
                                     
-                                @endphp
+                                @endphp --}}
                                 <tr>
                                     <td> Bid Status:</td>
                                 </tr>
@@ -227,25 +215,31 @@
                                 <tr>
                                     <td><span id="timer"></span></td>
                                 </tr>
+ <tr>
 
+                                        <td> {{ now()->format('Y-m-d') }}</td>
+                                    </tr>
                                 @if (!empty($bids))
-                                    @php
+                                    {{-- @php
                                         $totalBidAmount = 0;
                                         foreach ($bids as $bid) {
                                             if ($bid['vehicle_id'] === $subinfo->id) {
                                                 $totalBidAmount += $bid['amount'];
                                             }
                                         }
-                                    @endphp
+                                    @endphp --}}
 
-
+                                     
                                     <tr>
-                                        <td> ${{ $subinfo->current_bid + $totalBidAmount }} JD</td>
+                                        <td> ${{ $info->current_bid + $bids
+                                        
+                                        }} JD</td>
                                     </tr>
-                                @else
+                                @else 
+                               
                                     <tr>
 
-                                        <td> ${{ $subinfo->current_bid }} JD</td>
+                                        <td> ${{ $info->current_bid }} JD</td>
                                     </tr>
                                 @endif
 
@@ -260,14 +254,14 @@
                                             <input type="text" class="input" name="user_id"
                                                 value="{{ Auth::user()->id }}"hidden>
                                         @endauth
-                                        <input type="text" class="input" name="vehicle_id" value="{{ $subinfo->id }}"
+                                        <input type="text" class="input" name="vehicle_id" value="{{ $info->id }}"
                                             hidden>
                                         <input type="text" class="input" name="winstatus" value="no" hidden>
 
 
 
 
-                                        <input type="number" class="input" name="amount" max="100">
+                                        <input type="number" class="input" name="amount" >
                                     </td>
                                 </tr>
 
@@ -284,9 +278,7 @@
 
                         </div><br>
                         <center><small>($100.00 USD Bid Increment)</small><br>
-                            @if (Session::has('error'))
-                                <span style="color: red; font-size:15px">{{ Session::get('error') }}</span>
-                            @endif
+                          
                         </center>
 
                         <input type="submit" class="bid-link" value="Bid">
@@ -326,7 +318,7 @@
                         </table>
                     </div>
                 </div>
-                @endforeach
+                
             </div>
         </div>
     </div>
@@ -337,59 +329,52 @@
         </div>
         <div class="vehiclecards">
 
+@foreach ($vehicles as $infovehicles )
+    
 
             <div class="vehiclecard">
-                <img src="/images/1d4acdea8e37448da7bddf50ad98a301_ful.jpg" alt="">
-                <div class="vehiclecard-content">
-                    <p class="name">2014 BMW I3 BEV</p>
-                    <p class="lotnumber"> Lot # <span class="lotnumber">99960623</span></p>
-                    <p class="vehicleprice">Current Bid: <span class="price">$20,000.00 JD</span></p>
-                    <p class="location">Location: Al Hara Area</p>
-                    <div>
-                        <button class="vehiclebtn-detail">View Detail</button>
-                        <button class="vehiclebtn-watch">Watch</button>
+                <div class="swiper-container"style="overflow: hidden; height:55%" >
+        <div class="swiper-wrapper" >
+          
+            @foreach ($infovehicles->images as $image)
+                
+                    <div class="swiper-slide">
+                        <img src="{{ asset($image->filename) }}" alt="">
                     </div>
+                
+            @endforeach
+        </div>
+        
+    </div>
+              
+                <div class="vehiclecard-content">
+                    <p class="name">{{$infovehicles->year }} {{$infovehicles->make }} {{$infovehicles->model }} </p>
+                    <p class="lotnumber"> Lot # <span class="lotnumber">{{$infovehicles->id }}</span></p>
+                    <p class="vehicleprice">Current Bid: <span class="vehicleprice">${{$infovehicles->current_bid }} JD</span></p>
+                    <p class="location">Location: Al Hara Area</p>
+                     <div style="display: flex; justify-content:space-between">
+                <div style="margin-top: 15px">
+                    <a style="text-decoration: none" class="vehiclebtn-detail"href="{{route('subcategery',$infovehicles->id)  }}">View
+                        Detail</a>
+                </div>
+                <div>
+                   
+                   
+                    <form action="{{ route('watch') }}" method="post">
+                        @csrf
+                        <input type="text" name="vehicle_id" value="{{ $infovehicles->id }}" hidden>
+                        {{-- <input type="text" name="user_id" value="{{ Auth::user()->id }}" hidden> --}}
+
+                        <button type="submit" class="vehiclebtn-watch">WishList</button>
+                    </form> 
+                    
+                   
                 </div>
             </div>
-            <div class="vehiclecard">
-                <img src="/images/81b67fd65746457a98dda0144d0daaab_thb.jpg" alt="">
-                <div class="vehiclecard-content">
-                    <p class="name">2020 Hyundai ioniq 5</p>
-                    <p class="lotnumber"> Lot # <span class="lotnumber">94560623</span></p>
-                    <p class="vehicleprice">Current Bid: <span class="price">$12,000.00 JD</span></p>
-                    <p class="location">Location: Al Hara Area</p>
-                    <div>
-                        <button class="vehiclebtn-detail">View Detail</button>
-                        <button class="vehiclebtn-watch">Watch</button>
-                    </div>
                 </div>
             </div>
-            <div class="vehiclecard">
-                <img src="/images/9c43e1b7050b488e892026a9f0151419_thb.jpg" alt="">
-                <div class="vehiclecard-content">
-                    <p class="name">2018 Tesla model 4</p>
-                    <p class="lotnumber"> Lot # <span class="lotnumber">78660623</span></p>
-                    <p class="vehicleprice">Current Bid: <span class="price">$10,000.00 JD</span></p>
-                    <p class="location">Location: Al Hara Area</p>
-                    <div>
-                        <button class="vehiclebtn-detail">View Detail</button>
-                        <button class="vehiclebtn-watch">Watch</button>
-                    </div>
-                </div>
-            </div>
-            <div class="vehiclecard">
-                <img src="/images/344f233e39b8494da8b3da97ec6b3153_ful.jpg" alt="">
-                <div class="vehiclecard-content">
-                    <p class="name">2017 Tesla model 3</p>
-                    <p class="lotnumber"> Lot # <span class="lotnumber">86560623</span></p>
-                    <p class="vehicleprice">Current Bid: <span class="price">$18,000.00 JD</span></p>
-                    <p class="location">Location: Al Hara Area</p>
-                    <div>
-                        <button class="vehiclebtn-detail">View Detail</button>
-                        <button class="vehiclebtn-watch">Watch</button>
-                    </div>
-                </div>
-            </div>
+            
+           @endforeach
         </div>
 
     </div>
@@ -409,7 +394,47 @@
 
     <script src="{{ url('/javascript/subcategory.js') }}"></script>
     <script src="{{ url('/javascript/script.js') }}"></script>
-    <script></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    @if (session('error'))
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.js"></script>
+        <script>
+
+            // Use SweetAlert2 to display the alert from the right
+            Swal.fire({
+                icon: 'error',
+                title: 'error',
+                text: '{{ session('error') }}',
+                position: 'center', // Display from the top right
+                showConfirmButton: true, // Hide the confirmation button
+                // timer: 3000 // Automatically close after 3 seconds
+            });
+        </script>
+        
+    @endif
+    <script>
+        
+            var swiper = new Swiper('.swiper-container', {
+        // Optional parameters
+        loop: true, // Enable looping
+
+        // If you want pagination (dots navigation), you can add the following:
+        pagination: {
+            el: '.swiper-pagination',
+        },
+ autoplay: {
+            delay: 3000, // Delay between slides (in milliseconds)
+        },
+        // If you want navigation buttons (prev/next), you can add the following:
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+    </script>
 
     <!-- End Slider Script -->
 @endsection

@@ -3,7 +3,7 @@ body {
   /* display: grid;
   grid-template-columns: auto auto auto auto; */
 width:auto;
-height: 100vh;
+
 }
 
 /* ///////////////////body////////////////////////////// */
@@ -68,7 +68,8 @@ h1{
 table{
     width: 100%;
     text-align: center;
-    height: 100%;
+    
+   
 }
 tbody tr {
 }
@@ -104,6 +105,7 @@ padding: 10px 30px;}
     grid-column: 1/6;
     background-color: black;
     height:250px;
+    margin-top: 300px;
 }
 .section-four {
     grid-column: 1/6;

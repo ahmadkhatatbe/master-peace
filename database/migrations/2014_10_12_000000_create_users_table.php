@@ -14,15 +14,20 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('password');
+            $table->string('business_name')->nullable();
+            $table->string('type_account');
             $table->string('email');
+            $table->string('password');
+            $table->timestamp('email_verified_at')->nullable();
             $table->string('contact_address')->nullable();
             $table->string('contact_phone')->nullable();
             $table->string('payment_info')->nullable();
             $table->string('winner')->nullable();
 
             $table->timestamp('registration_date')->useCurrent();
-            $table->enum('role', ['Seller', 'Buyer']);
+            $table->string('role')->nullable();
+            $table->rememberToken();
+
             $table->timestamps();
         });
     }

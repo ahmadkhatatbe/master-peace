@@ -89,7 +89,7 @@
             <li class="link" id="auction"><a href="{{ route('contact') }}"> Contact </a></li>
             <li class="link"><a href=""> How It works </a></li>
             <li class="link"><a href=""> Inventory </a></li>
-            <li class="link" id="auction"><a href=""> Auction </a></li>
+            <li class="link" id="auction"><a href="{{ route('auction') }}"> Auction </a></li>
             <li class="link"><a href="{{ route('services') }}"> Services&Support </a></li>
 
         </ul>
@@ -104,7 +104,7 @@
                     <li class="down"> <a href="login">For Individual</a></li>
                     <li class="down"><a href="login"> For Dealers </a></li>
                 @else
-                    @if (Auth::user()->role == 'Seller')
+                    @if (Auth::user()->role == 'seller')
                         <li class="down"> <a href="{{ route('seller.index') }}">For Individual</a></li>
                         <li class="down"><a href="{{ route('seller.index') }}"> For Dealers </a></li>
                     @else

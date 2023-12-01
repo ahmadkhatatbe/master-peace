@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Auth;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -59,7 +60,7 @@ class User extends Authenticatable
 
     public function auctionParticipation()
     {
-        return $this->belongsToMany(Auction::class, 'auction_participants', 'user_id', 'auction_id');
+        return $this->belongsToMany(Auction::class, 'auction_participants', 'user_id', 'auction_id', 'vehicle_id');
     }
     public function vehicle()
     {

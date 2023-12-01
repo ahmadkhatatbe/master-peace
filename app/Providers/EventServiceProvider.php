@@ -4,8 +4,10 @@ namespace App\Providers;
 
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
+use Illuminate\Database\DatabaseServiceProvider;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -35,4 +37,15 @@ class EventServiceProvider extends ServiceProvider
     {
         return false;
     }
+
+    public function register()
+    {
+        if ($this->app->environment() !== 'production') {
+            $this->app->register(DatabaseServiceProvider::class);
+
+            // Register your factories here
+            Factory::useNamespace('Database\Factories');
+        }
+    }
+
 }

@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\AuctionParticipants;
+use Auth;
 use Illuminate\Support\ServiceProvider;
+use View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +22,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+              View::composer('*', function ($view) {
+            if(Auth::check()){
+            $AuctionParticipantsHeader = AuctionParticipants::where('user_id', Auth::user()->id)->get();
+          
+                        $view->with(compact('AuctionParticipantsHeader'));
+                    }
+
+       
+        });
+
+          
     }
+    
 }

@@ -61,26 +61,29 @@
                                 <!-- active & hover classes 'text-gray-700 dark:text-light' -->
                                 <!-- inActive classes 'text-gray-400 dark:text-gray-400' -->
                                 <a href="{{ route('home') }}" role="menuitem"
-                                        class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
-                                        Home
-                                    </a>
+                                    class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
+                                    Home
+                                </a>
+                                <a href="{{ route('profile.edit') }}" role="menuitem"
+                                    class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
+                                    Your Profile
+                                </a>
+
+                                @if (Auth::user()->role == 'Seller')
                                     <a href="{{ route('seller.index') }}" role="menuitem"
                                         class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
-                                        Dashboard
+                                        My Own Vehicles
                                     </a>
-                                     @if (Auth::user()->role =='Seller')
-                                  
-                                     <a href="{{ route('seller.index') }}" role="menuitem"
-                                        class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
-                                       My Own Vehicles
-                                    </a>
-                                        
-                                    @endif
-                                    <a href="{{ route('profile.edit') }}" role="menuitem"
-                                         class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
-                                        Profile </a>
-
-
+                                    @else
+                                    <a href="{{ route('buyervehicles') }}" role="menuitem"
+                                    class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
+                                    My Own Vehicles </a>
+                                @endif
+                                
+                                <a href="{{ route('vehicles') }}" role="menuitem"
+                                    class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
+                                    Join to bid on vehicles
+                                </a>
                             </div>
                         </div>
 
@@ -229,25 +232,31 @@
                                     class="absolute right-0 w-48 py-1 bg-white rounded-md shadow-lg top-12 ring-1 ring-black ring-opacity-5 dark:bg-dark focus:outline-none"
                                     tabindex="-1" role="menu" aria-orientation="vertical"
                                     aria-label="User menu">
-                                     <a href="{{ route('home') }}" role="menuitem"
+                                    <a href="{{ route('home') }}" role="menuitem"
                                         class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
                                         Home
                                     </a>
-                                    <a href="{{ route('seller.index') }}" role="menuitem"
-                                        class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
-                                        Dashboard
-                                    </a>
-                                     @if (Auth::user()->role =='Seller')
-                                   
-                                     <a href="{{ route('seller.index') }}" role="menuitem"
-                                        class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
-                                       My Own Vehicles
-                                    </a>
-                                        
-                                    @endif
                                     <a href="{{ route('profile.edit') }}" role="menuitem"
-                                         class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
-                                        Profile </a>
+                                        class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
+                                        Your Profile
+                                    </a>
+
+                                    @if (Auth::user()->role == 'Seller')
+                                        <a href="{{ route('seller.index') }}" role="menuitem"
+                                            class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
+                                            My Own Vehicles
+                                        </a>
+                                        @else
+
+                                        <a href="{{ route('buyervehicles') }}" role="menuitem"
+                                        class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
+                                        myOwnvehicles </a>
+                                    @endif
+                                    
+                                    <a href="{{ route('vehicles') }}" role="menuitem"
+                                        class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
+                                        Join to bid on vehicles
+                                    </a>
                                 </div>
                             </div>
                         </nav>
@@ -349,21 +358,26 @@
                                         class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
                                         Home
                                     </a>
-                                    <a href="{{ route('seller.index') }}" role="menuitem"
-                                        class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
-                                        Dashboard
-                                    </a>
-                                     @if (Auth::user()->role =='Seller')
-                                    
-                                     <a href="{{ route('seller.index') }}" role="menuitem"
-                                        class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
-                                       My Own Vehicles
-                                    </a>
-                                        
-                                    @endif
                                     <a href="{{ route('profile.edit') }}" role="menuitem"
-                                         class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
-                                        Profile </a>
+                                        class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
+                                        Your Profile
+                                    </a>
+
+                                    @if (Auth::user()->role == 'Seller')
+                                        <a href="{{ route('seller.index') }}" role="menuitem"
+                                            class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
+                                            My Own Vehicles
+                                        </a>
+                                        @else
+                                         <a href="{{ route('buyervehicles') }}" role="menuitem"
+                                        class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
+                                        myOwnvehicles </a>
+                                    @endif
+                                   
+                                    <a href="{{ route('vehicles') }}" role="menuitem"
+                                        class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
+                                        Join to bid on vehicles
+                                    </a>
                                 </div>
                             </div>
                         </nav>
@@ -406,22 +420,28 @@
                                         class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
                                         Home
                                     </a>
-                                    <a href="{{ route('seller.index') }}" role="menuitem"
-                                        class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
-                                        Dashboard
-                                    </a>
-                                     @if (Auth::user()->role =='Seller')
-                                    
-                                     <a href="{{ route('seller.index') }}" role="menuitem"
-                                        class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
-                                       My Own Vehicles
-                                    </a>
-                                        
-                                    @endif
                                     <a href="{{ route('profile.edit') }}" role="menuitem"
-                                         class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
-                                        Profile </a>
+                                        class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
+                                        Your Profile
+                                    </a>
 
+                                    @if (Auth::user()->role == 'Seller')
+                                        <a href="{{ route('seller.index') }}" role="menuitem"
+                                            class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
+                                            My Own Vehicles
+                                        </a>
+
+                                        @else
+
+                                        <a href="{{ route('buyervehicles') }}" role="menuitem"
+                                        class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
+                                        myOwnvehicles </a>
+                                    @endif
+                                    
+                                    <a href="{{ route('vehicles') }}" role="menuitem"
+                                        class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
+                                        Join to bid on vehicles
+                                    </a>
                                 </div>
                             </div>
 

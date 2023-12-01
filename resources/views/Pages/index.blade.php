@@ -3,8 +3,8 @@
 @section('title', 'home')
 
 <link rel="stylesheet" href="{{ url('/css/home.css') }}">
-
-
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 @section('content')
     <!--/////////////////////////////////start section-one///////////////////////////////  -->
 
@@ -14,7 +14,7 @@
                 priced used electric vehicle in our
                 auction and be part of positive environmental change</p>
             <div>
-                <button class="btn-register-section-one" id="register-parttow">register to start Bidding </button>
+               <a href="{{route('register')}}"> <button class="btn-register-section-one" id="register-parttow">register to start Bidding </button></a>
             </div>
         </div>
     </section>
@@ -38,10 +38,33 @@
 
     <section class="section-two">
         <div class="name-section-two">
-            <p>Popular Vehicles</p>
+            <div>
+            <p>Popular Vehicles</p> 
         </div>
+            <div class="custom-pagination">
+    <ul id="pagination" class="pagination">
+        @if ($vehicles->onFirstPage())
+            <li id="previous" class="previous  disabled"><span class="page-link"><</span></li>
+        @else
+            <li id="previous" class="previous  "><a class="page-link" href="{{ $vehicles->previousPageUrl() }}"><</a></li>
+        @endif
+
+        @if ($vehicles->hasMorePages())
+            <li id="next" class="next  "><a class="page-link" href="{{ $vehicles->nextPageUrl() }}">></a></li>
+        @else
+            <li  id="next" class="next   disabled"><span class="page-link">></span></li>
+        @endif
+    </ul>
+</div>
+        </div>
+       <!-- Custom Pagination Buttons -->
+
         @foreach ($vehicles as $vehicle)
-            @if (!empty($bids))
+         
+      
+            
+        
+         
                 @php
                     $totalBidAmount = 0;
                     foreach ($bids as $bid) {
@@ -53,15 +76,24 @@
 
 
                 <div class="card">
-                    <img src="{{url('/images/81b67fd65746457a98dda0144d0daaab_thb.jpg')}}" alt="">
+                 <div class="swiper-container"style="overflow: hidden; height:55%" >
+        <div class="swiper-wrapper" >
+            @foreach ($images as $image)
+                @if ($image->vehicle_id == $vehicle->id)
+                    <div class="swiper-slide">
+                        <img src="{{ asset($image->filename) }}" alt="">
+                    </div>
+                @endif
+            @endforeach
+        </div>
+        
+    </div>
                     <div class="card-content">
                         <p class="name">{{ $vehicle->make }} {{ $vehicle->model }} {{ $vehicle->year }}</p>
                         <p class="lotnumber"> Lot # <span class="lotnumber">{{ $vehicle->id }}</span></p>
                         <p class="price">Current Bid: <span
                                 class="price">${{ $vehicle->current_bid + $totalBidAmount }}</span></p>
-                    @else
-                        <p class="price">Current Bid: <span class="price">${{ $vehicle->current_bid }}</span></p>
-            @endif
+                    
             <p class="location">Location: Al Hara Area</p>
             <div style="display: flex; justify-content:space-between">
                 <div style="margin-top: 15px">
@@ -76,7 +108,7 @@
                         <input type="text" name="vehicle_id" value="{{ $vehicle->id }}" hidden>
                         {{-- <input type="text" name="user_id" value="{{ Auth::user()->id }}" hidden> --}}
 
-                        <button type="submit" class="btn-watch">Watch</button>
+                        <button type="submit" class="btn-watch">WishList</button>
                     </form> 
                     
                    
@@ -153,31 +185,33 @@
 
 
         </div>
-        <div class="btn-section-three"> <button>REGISTER NOW</button></div>
+        <div class="btn-section-three"><a href="{{route('register')}}"> <button>REGISTER NOW</button></a></div>
     </section>
 
 
     <!--////////////////////////////////////////////////End section-three///////////////////////////////  -->
 
     <script src="{{ url('/javascript/home.js') }}"></script>
-    <!-- Tiny-Swiper JS -->
-    <script src="{{ url('https://unpkg.com/tiny-swiper@latest/lib/index.min.js') }}"></script>
-    <script src="{{ url('https://unpkg.com/tiny-swiper@latest/lib/modules/navigation.min.js') }}"></script>
+   <script>
+   var swiper = new Swiper('.swiper-container', {
+        // Optional parameters
+        loop: true, // Enable looping
 
-    <!-- Initialize Tiny-Swiper -->
-    <script>
-        var swiper = new Swiper(".swiper-container", {
-            mousewheel: {
-                invert: false,
-                interval: 400
-            },
-            navigation: {
-                prevEl: ".swiper-plugin-navigation-prevEl",
-                nextEl: ".swiper-plugin-navigation-nextEl"
-            },
-            plugins: [SwiperPluginNavigation]
-        });
-    </script>
+        // If you want pagination (dots navigation), you can add the following:
+        pagination: {
+            el: '.swiper-pagination',
+        },
+ autoplay: {
+            delay: 3000, // Delay between slides (in milliseconds)
+        },
+        // If you want navigation buttons (prev/next), you can add the following:
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+</script>
+
 @endsection
 </body>
 

@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
-
+use \Illuminate\Validation\ValidationException;
 class RegisteredUserController extends Controller
 {
     /**
@@ -36,13 +36,22 @@ class RegisteredUserController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
-
+if(isset($request->businessName)){
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'business_name' => $request->businessName,
+            'type_account' => $request->type_account,
             'password' => Hash::make($request->password),
         ]);
-
+}else{
+    $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'type_account' => $request->type_account,
+            'password' => Hash::make($request->password),
+        ]);
+}
         event(new Registered($user));
 
         Auth::login($user);

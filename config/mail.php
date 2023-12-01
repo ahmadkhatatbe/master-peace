@@ -56,6 +56,11 @@ return [
             //     'timeout' => 5,
             // ],
         ],
+        // start mailtrap transport
+        'mailtrap' => [
+            'transport' => 'mailtrap'
+        ],
+        // end mailtrap transport
 
         'postmark' => [
             'transport' => 'postmark',
@@ -99,8 +104,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'ahmedkatatbeh123@gmail.com'),
+        'name' => env('MAIL_FROM_NAME', 'Mazadi'),
     ],
 
     /*

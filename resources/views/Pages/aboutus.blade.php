@@ -1,11 +1,10 @@
 @extends('layouts.master')
+
+
  @section('title','about')
 
-    <link rel="stylesheet" href="{{url('/css/aboutus.css')}}">
-
-
 @section('content')
-
+ <link rel="stylesheet" href="{{url('/css/aboutus.css')}}">
 <!--///////////////////// section-one ////////////////////// -->
 <div class="section-one ">
    <h1 class="about" id="about">About Us</h1> 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use DB;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
 
@@ -60,17 +61,21 @@ class paypal extends Controller
         $provider->setApiCredentials(config('paypal'));
         $paypaltoken = $provider->getAccessToken();
         $response = $provider->capturePaymentOrder($request->token);
+        // use carbon library
+        $expirationDate = Carbon::now()->addYear();
 
         if (isset($response['status']) && $response['status'] == "COMPLETED") {
            DB::table('payments')->insert([
                 'user_id' => $id,
-                'auction_id' => 1,
                 'user_name' => $response['payment_source']['paypal']['name']['given_name'] . $response['payment_source']['paypal']['name']['surname'],
                 'user_email' => $response['payment_source']['paypal']['email_address'],
                 'payment_status' => $response['payment_source']['paypal']['account_status'],
                 'currency' => 'USD',
                 'amount' => $response['purchase_units'][0]['payments']['captures'][0]['amount']['value'],
-
+                'expiration_date' => $expirationDate,
+            ]);
+            DB::table('users')->update([
+                'role'=>'buyer'
             ]);
             // approve payment
             return redirect()->route('home');

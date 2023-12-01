@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('vehicles', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('admin_id')->nullable();
 
             $table->string('make');
             $table->string('model');
@@ -26,9 +27,14 @@ return new class extends Migration
             $table->decimal('retail_value');
             $table->integer('mileage');
             $table->decimal('current_bid', 10, 2);
+            $table->decimal('target', 10, 2);
+            $table->integer('buyer_id')->nullable();
+            $table->decimal('price_was_bought', 10, 2)->nullable();
+            $table->decimal('status')->nullable();
             $table->decimal('buy_now_price');
-            
-            $table->unsignedBigInteger('auction_id')->default('1');
+            $table->unsignedBigInteger('auction_id')->nullable();
+            $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
+
             $table->foreign('auction_id')->references('id')->on('auctions')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 

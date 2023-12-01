@@ -16,10 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('vehicle_id');
             $table->decimal('amount', 10, 2);
-            $table->string('winstatus')->default('yes');
             $table->time('bidtime');
-
-            $table->string('winner')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('vehicle_id')->references('id')->on('vehicles')->onDelete('cascade');
 

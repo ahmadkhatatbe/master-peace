@@ -48,7 +48,7 @@ registration. </p>
 
 <div class="member" id="choosetow">
     <div id="member_premier">
-    <input type="radio" name="premier"  id="premier" value="250"><span>premier</span>
+    <input type="radio" name="premier"  id="premier" value="650"><span>premier</span>
     <p>Buy many cars a year</p>
     <p class="price"> $250.00 JD/YEAR</p>
     <P><small>(+ $400.00 JD Refundable deposit)</small></P>
@@ -75,7 +75,7 @@ registration. </p>
         <img class="credit_card" id="credit_card"src="/images/credit_card_icon_129105.png" alt="">
     </div>
     <div class="option"id="ebay">
-       <img class="ebay" src="/images/Ebay_icon-icons.com_66888 (1).png" alt="">
+       <img class="ebay" src="/images/paypalimage.png" alt="">
     </div>
     <div class="option">
         <img class="googlepay" id="googlepay"src="/images/cads.png" alt=""><span>pay</span>
@@ -121,17 +121,21 @@ method on file. You can cancel your Membership
   <input  type="text" name="user_id" value="{{Auth::user()->id}}" hidden>
 
   <input id="member_type" type="text" name="member_value" value="" hidden>
-  
-  <input type="image" name="submit"
-    src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif"
-    alt="PayPal - The safer, easier way to pay online" width="200" height="100">
-  <img alt="" width="5" height="5"
-    src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
+  <button type="submit">
+
+ <table border="0" cellpadding="10" cellspacing="0" align="center"><tr><td align="center"></td></tr><tr><td align="center"><img src="https://www.paypalobjects.com/webstatic/en_AU/i/buttons/btn_paywith_primary_l.png" alt="Pay with PayPal" /></td></tr></table><!-- PayPal Logo -->
+
+
+  </button>
 
 </form>
  </div>
 </div>
-<button><a href="{{route('paypal')}}">paypal</a> </button>
+
+
+
+
+
 <script src="{{url('/javascript/registrationstep2.js')}}"></script>
 @endsection
 </body>

@@ -27,7 +27,13 @@ overflow: hidden;
   
 }
 
-
+.logout{
+  padding: 13px 50px;
+  background-color: black;
+  border: none;
+  color: white;
+  font-weight: bold;
+}
 
 #search {
 height: 40px;
@@ -88,7 +94,7 @@ font-size: 15px;
 
 
 .header-form input{
-
+font-size: 15px;
 height: 40px;
   width: 350px;
   border: none;
@@ -386,7 +392,7 @@ height: 50px;
 
 .search-tablet{
   display:flex;
-  
+  width: 50%;
   padding-top: 7px;
 }
 #register-responsive{
@@ -647,7 +653,7 @@ font-size: 25px;
 border: none;
 border-radius: 5px;
 font-size: 15px;
-width: 380px;
+width: 100vw;
 }
 #btn-search {
     font-size: 12px;
@@ -668,7 +674,7 @@ display: none;
 #sell {
     margin-top: 0px;
     height: 35px;
-    width: 395px;
+    width: 365;
     font-size:15px;
     text-align: center;
    
@@ -687,4 +693,34 @@ display: none;
 /* ////////////////////////endheader////////////////////////// */
 
 
+}
+@media screen and (max-width:376px){
+.search-tablet input {
+ 
+    width: 280px;
+}
+#sell {
+    margin-top: 0px;
+    height: 35px;
+    width: 340;
+    font-size: 15px;
+    text-align: center;
+    position: relative;
+    list-style: none;
+}
+}
+@media screen and (max-width:321px){
+.search-tablet input {
+ 
+    width: 230px;
+}
+#sell {
+    margin-top: 0px;
+    height: 35px;
+    width: 290;
+    font-size: 15px;
+    text-align: center;
+    position: relative;
+    list-style: none;
+}
 }

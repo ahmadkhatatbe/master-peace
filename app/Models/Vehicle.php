@@ -24,6 +24,9 @@ class Vehicle extends Model
         'mileage',
         'current_bid',
         'buy_now_price',
+        'buyer_id',
+        'price_was_bought',
+        'target',
         'auction_id',
         // Add other vehicle fields here
     ];
@@ -41,20 +44,34 @@ class Vehicle extends Model
     {
         return $this->hasMany(Bid::class);
     }
-
+    public function participants()
+    {
+        return $this->hasMany(AuctionParticipants::class);
+    }
     public function images()
     {
-        return $this->hasMany(Image::class);
+        return $this->hasMany(Image::class); // Replace 'Image' with the actual name of your Image model.
     }
-
     public function watchlistByUsers()
     {
         return $this->belongsToMany(User::class, 'watchlist', 'vehicle_id', 'user_id');
     }
-const SEARCHABLE_FIELDS=['make'];
     public function toSearchableArray()
     {
-        return $this->only(self::SEARCHABLE_FIELDS);
+        return [
+            'id' => $this->id,
+            'make'=>$this->make,
+            'model'=>$this->model,
+            'year'=>$this->year,
+            'vin'=>$this->vin,
+            'title_code'=>$this->code,
+            'color'=>$this->color,
+            'primary_damage'=>$this->damage,
+            'secondary_damage'=>$this->secondary_damage,
+            'mileage'=>$this->mileage,
+            
+
+        ];
     }
     
 }

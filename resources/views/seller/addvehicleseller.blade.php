@@ -134,6 +134,27 @@
                                                 </div>
                                             </div>
                                               <div class="flex col-12 ">
+                                                 <div class="form-group col-4 m-1">
+                                                    <label for="Primary Damage">Auction</label>
+                                                    <select class="form-control" id="Primary Damage"
+                                                        name="auction_id">
+                                                        @foreach ($auctions as $auction )
+                                                            
+                                                       
+                                                        <option value="{{$auction->id}}">{{$auction->title}}</option>
+                                                         @endforeach
+                                                        
+
+                                                    </select>
+
+                                                </div>
+                                                <div class="form-group col-4 m-1">
+                                                    <label for="buynow">Target</label>
+                                                    <input type="number" class="form-control"
+                                                        id="exampleInputEmail1" name="target"
+                                                        placeholder="terget">
+
+                                                </div>
                                                 <div class="form-group col-4 m-1">
                                                     <label for="image">Images</label>
                                                     <input type="file" multiple class="form-control"

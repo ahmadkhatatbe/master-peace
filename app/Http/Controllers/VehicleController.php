@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AuctionParticipants;
 use App\Models\Image;
 use App\Models\Vehicle;
+use App\Models\Auction;
+
 use App\Models\User;
 use App\Models\Seller;
 
@@ -43,8 +46,8 @@ class VehicleController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        return view('admindashboard/pages/addvehicles');
+    {  $Auctions=Auction::get()->all();
+        return view('admindashboard/pages/addvehicles',compact('Auctions'));
         //
     }
 
@@ -56,7 +59,7 @@ class VehicleController extends Controller
 
         $vehicle = Vehicle::Create([
             'make' => $request->make,
-            'user_id' => Auth::user()->id,
+            'user_id' =>1,
             'year' => $request->year,
             'vin' => $request->vin,
             'title_code' => $request->title_code,
@@ -68,7 +71,8 @@ class VehicleController extends Controller
             'mileage' => $request->mileage,
             'current_bid' => $request->current_bid,
             'buy_now_price' => $request->buy_now_price,
-            'auction_id' => 1
+            'target' => $request->target,
+            'auction_id' => $request->auction_id
 
 
 
@@ -142,6 +146,8 @@ class VehicleController extends Controller
         $vehicles->mileage = $request->mileage;
         $vehicles->current_bid = $request->current_bid;
         $vehicles->buy_now_price = $request->buy_now_price;
+        $vehicles->target = $request->target;
+    $vehicles->auction_id =$request->auction_id;
 
         $vehicles->save();
 
@@ -153,6 +159,8 @@ class VehicleController extends Controller
      */
     public function destroy($id)
     {
+        AuctionParticipants::where('vehicle_id',$id)->delete();
+        Image::where('vehicle_id',$id)->delete();
         Vehicle::destroy($id);
 
         return redirect()->route('vehicle.index');

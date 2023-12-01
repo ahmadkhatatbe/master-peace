@@ -12,8 +12,78 @@ width:auto;
 height: 100vh;
 }
 
+#pagination{
+  position: relative;
+}
+#next{
+  position: absolute;
+  right: 0px;
+  top: 350px;
+  z-index: 999;
+    cursor: pointer;
 
+}
+.next{
+  font-size: 20px;
+  font-weight: bolder;
+  padding: 10px 10px;
+  color: white;
+    background-color:#007bff ;
+border-radius: 20px;
+
+}
+.previous{
+  font-size: 20px;
+  font-weight: bolder;
+  padding: 10px 10px;
+    color: white;
+border-radius: 20px;
+    background-color:#007bff ;
+
+}
+#previous{
+  position: absolute;
+  left: 0px;
+  top: 350px;
+  z-index: 999;
+  cursor: pointer;
+}
 /* //////////////////////////Start The Section-one////////////////////////////// */
+/* Custom CSS for Pagination Buttons */
+.custom-pagination {
+   
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.custom-pagination .pagination {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+}
+
+.custom-pagination .page-item {
+    border: 1px solid #007bff;
+    border-radius: 3px;
+    padding: 10px 20px;
+    
+}
+
+
+.custom-pagination .page-item a,
+.custom-pagination .page-item span {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.custom-pagination .page-item:hover{
+  background-color: #007bff;
+  color: white!important;
+}
+.custom-pagination .page-item.disabled a {
+    pointer-events: none;
+    opacity: 0.6;
+}
 .section-one {
   display: grid;
   grid-template-columns: auto;
@@ -561,14 +631,14 @@ margin-left: 10px;
     grid-template-columns: auto auto;
     margin-top: 20px;
     /* padding-left: 4%; */
-    height: 1700px;
+    height: 800px;
     padding-left: 10px;
     padding-right: 10px;
 }
 
 .card {
     line-height: 45px;
-    background-color: #eaeaea;
+    background-color: white;
     margin: 10px;
     height: 610px;
     /* width: 280px; */
@@ -597,7 +667,7 @@ margin-left: 10px;
 }
 .card {
     line-height: 45px;
-    background-color: #eaeaea;
+    background-color: white;
     margin: 10px;
     height: 610px;
     /* width: 280px; */
@@ -906,7 +976,7 @@ display: none;
     margin-top: 20px;
     justify-content: center;
     /* padding-left: 4%; */
-    height:3500px;
+    height:1000px;
     padding-left: 10px;
     padding-right: 10px;
     
@@ -935,7 +1005,7 @@ display: none;
 .card {
   grid-column: 1/1;
     line-height: 45px;
-    background-color: #eaeaea;
+    background-color: white;
     margin: 10px;
     height: 710px;
     border-radius: 5px;

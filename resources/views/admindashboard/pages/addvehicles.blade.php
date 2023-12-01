@@ -58,11 +58,26 @@
 
                                                 </div>
                                             </div>
-                                            <div class="form-group col-12 m-1">
+                                            <div class="flex col-12 ">
+                                            <div class="form-group col-6 m-1">
                                                 <label for="vin">Vin</label>
                                                 <input type="text" class="form-control" id="exampleInputEmail1"
                                                     name="vin" placeholder="Vin">
 
+                                            </div>
+                                             <div class="form-group col-6 m-1">
+                                                    <label for="Primary Damage">Primary Damage</label>
+                                                    <select class="form-control" id="Primary Damage"
+                                                        name="primary_damage">
+                                                        @foreach ($Auctions as $Auction )
+                                                            <option value="{{$Auction->id}}">{{$Auction->title}}</option>
+                                                        @endforeach
+                                                        
+                                                        
+
+                                                    </select>
+
+                                                </div>
                                             </div>
                                             <div class="flex col-12 ">
                                                 <div class="form-group col-4 m-1">
@@ -135,6 +150,15 @@
                                                 
                                                
                                             </div> 
+                                            <div class="flex col-12 ">
+                                                 <div class="form-group col-4 m-1">
+                                                    <label for="buynow">Target</label>
+                                                    <input type="text" class="form-control"
+                                                        id="exampleInputEmail1" name="target"
+                                                        placeholder="target">
+                                                        
+
+                                                </div>
                                             <div class="form-group col-4 m-1">
                                                     <label for="image">Images</label>
                                                     <input type="file" multiple class="form-control"
@@ -142,6 +166,7 @@
                                                         placeholder="Images">
 
                                                 </div>
+                                            </div>
                                             <br>
                                             <button type="submit" class="btn btn-primary w-full m-1">Add</button>
                                         </form>

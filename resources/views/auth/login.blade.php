@@ -6,7 +6,7 @@
 @section('content') 
    <link rel="stylesheet" href="{{url('/css/signin.css')}}">
 
-      <div class="label"><h2>LogIn</h2></div>  
+      <div class="label"><h2>SignIn</h2></div>  
 
    
     <div class="container">
@@ -39,7 +39,6 @@
                  <span>or</span><br>
                 
  <button class="btn-gmail"> <img src="" alt="" srcset="">Continue with Gmail</button>
-                <button class="btn-facbook"><img src="" alt="" srcset="">Continue with Facebook</button>
                 </form>
 
         </div>

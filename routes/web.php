@@ -13,6 +13,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\VehicleController;
 use App\Http\Livewire\BiddingComponent;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\LiveAuction;
 
 
 /*
@@ -56,18 +57,26 @@ Route::get('services', function () {
 })->name('services');
 
 
-Route::get('categery', function () {
-    return view('pages/categery');
-})->name('categery');
+// Route::get('categery', function () {
+//     return view('pages/categery');
+// })->name('categery');
 
 
 // //////////////////display the vehicles///////////////
+
+
 Route::get('categery', [SearchController::class, 'index'])->name('categery');
 Route::get('subcategery/{id}', [SearchController::class, 'single'])->name('subcategery');
-Route::post('subcategery/bid', [Controller::class, 'bid'])->middleware('auth', 'verified')->name('bid');
+Route::post('subcategery/bid', [Controller::class, 'bid'])->name('bid');
 
 
-Route::post('/place-bid', [Controller::class,'placeBid'])->name('place-bid');
+Route::post('/livebid', [LiveAuction::class, 'livebidding'])->name('livebid');
+Route::get('/livebid/{vehicleId}', [LiveAuction::class, 'getlastbidder'])->name('getlivebid');
+
+Route::get('auction/{id}', [LiveAuction::class, 'auction'])->name('auction');
+Route::get('auctiondata', [LiveAuction::class, 'auctiondata'])->name('auctiondata');
+Route::get('VehiclesParticipants', [LiveAuction::class, 'VehiclesParticipants'])->name('VehiclesParticipants');
+
 
 
 
@@ -104,8 +113,12 @@ Route::get('conformation', function () {
 // 
 Route::get('search', [SearchController::class, 'index'])->name('search');
 
+//////////////////////////update account//////////////////////////
 
+Route::get('updateAccount', [Controller::class, 'update_seller'])->name('update_seller');
+Route::post('account_updated', [Controller::class, 'account_updated'])->name('account_updated');
 
+////////////////////////////////////////////////////////////////////////////
 
 
 Route::middleware('auth')->group(function () {
@@ -114,14 +127,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 
-    Route::post('registertow', [RegisteredUserController::class, 'storeregistertow']);
+    Route::post('registertow', [\App\Http\Controllers\Auth\RegisteredUserController::class, 'storeregistertow']);
     Route::get('registertow', function () {
         return view('pages/registertow');
     })->name('registertow');
 });
 
 
-Route::post('registertow', [RegisteredUserController::class, 'storeregistertow'])->name('registertow');
+Route::post('registertow', [\App\Http\Controllers\Auth\RegisteredUserController::class, 'storeregistertow'])->name('registertow');
 
 // //////////////////////////////////////////////////////////////////////
 /////////////////// //  // admin dashboard routes////////////////////////
@@ -133,29 +146,29 @@ Route::post('/loginadmin', [LoginAdmin::class, 'store'])->name('adminlogin');
 
 Route::get('/logoutadmin', [LoginAdmin::class, 'logout_admin'])->name('logoutadmin');
 
-Route::prefix('admin')->middleware('IsAdmin')->group(function(){
-Route::get('adminhome', [Controller::class, 'dashboard'])->name('adminhome');
+Route::prefix('admin')->middleware('IsAdmin')->group(function () {
+    Route::get('adminhome', [Controller::class, 'dashboard'])->name('adminhome');
 
-Route::resource('admins', AdminController::class);
-       
-Route::get('adduser', function () {
-    return view('admindashboard/pages/adduser');
-})->name('adduser');
+    Route::resource('admins', AdminController::class);
 
-Route::get('addvehicles', function () {
-    return view('admindashboard/pages/addvehicles');
-})->name('add.create');
-// Add users by use admin dashboard
-Route::resource('vehicle', VehicleController::class);
-Route::get('currentvehicles', [VehicleController::class, 'show'])->name('currentvehicles');
-Route::get('sellers', [Controller::class, 'seller'])->name('sellers');
+    Route::get('adduser', function () {
+        return view('admindashboard/pages/adduser');
+    })->name('adduser');
 
-// /////////((ADMIN))////(users, update users,delete users, ) //////////
-Route::resource('user', UsersController::class);
+    Route::get('addvehicles', function () {
+        return view('admindashboard/pages/addvehicles');
+    })->name('add.create');
+    // Add users by use admin dashboard
+    Route::resource('vehicle', VehicleController::class);
+    Route::get('currentvehicles', [VehicleController::class, 'show'])->name('currentvehicles');
+    Route::get('sellers', [Controller::class, 'seller'])->name('sellers');
 
-// /////////////////////////////////
+    // /////////((ADMIN))////(users, update users,delete users, ) //////////
+    Route::resource('user', UsersController::class);
+
+    // /////////////////////////////////
 ///////////(auction)//////////////
-Route::resource('auction', AuctionController::class);
+    Route::resource('auction', AuctionController::class);
 
     Route::get('addauction', function () {
         return view('admindashboard/pages/addauction');
@@ -190,6 +203,10 @@ Route::resource('auction', AuctionController::class);
 
 Route::resource('seller', SellerController::class);
 Route::get('sellervehicles', [SellerController::class, 'show'])->name('sellervehicles');
+
+Route::get('buyervehicles', [Controller::class, 'buyer'])->name('buyervehicles');
+Route::get('vehicles', [Controller::class, 'vehicle'])->name('vehicles');
+Route::post('join', [Controller::class, 'join'])->name('join');
 
 
 require __DIR__ . '/auth.php';
