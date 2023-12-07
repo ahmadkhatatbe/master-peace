@@ -72,14 +72,14 @@
                                 @if (Auth::user()->role == 'seller')
                                     <a href="{{ route('seller.index') }}" role="menuitem"
                                         class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
-                                        My Own Vehicles
+                                        Add Vehicles
                                     </a>
-                                    @else
-                                    <a href="{{ route('buyervehicles') }}" role="menuitem"
+                                    
+                                    
+                                @endif
+                                <a href="{{ route('buyervehicles') }}" role="menuitem"
                                     class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
                                     My Own Vehicles </a>
-                                @endif
-                                
                                 <a href="{{ route('vehicles') }}" role="menuitem"
                                     class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
                                     Join to bid on vehicles
@@ -245,14 +245,14 @@
                                 @if (Auth::user()->role == 'seller')
                                     <a href="{{ route('seller.index') }}" role="menuitem"
                                         class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
-                                        My Own Vehicles
+                                        Add Vehicles
                                     </a>
-                                    @else
-                                    <a href="{{ route('buyervehicles') }}" role="menuitem"
+                                    
+                                    
+                                @endif
+                                <a href="{{ route('buyervehicles') }}" role="menuitem"
                                     class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
                                     My Own Vehicles </a>
-                                @endif
-                                
                                 <a href="{{ route('vehicles') }}" role="menuitem"
                                     class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
                                     Join to bid on vehicles
@@ -368,14 +368,14 @@
                                 @if (Auth::user()->role == 'seller')
                                     <a href="{{ route('seller.index') }}" role="menuitem"
                                         class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
-                                        My Own Vehicles
+                                        Add Vehicles
                                     </a>
-                                    @else
-                                    <a href="{{ route('buyervehicles') }}" role="menuitem"
+                                    
+                                    
+                                @endif
+                                <a href="{{ route('buyervehicles') }}" role="menuitem"
                                     class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
                                     My Own Vehicles </a>
-                                @endif
-                                
                                 <a href="{{ route('vehicles') }}" role="menuitem"
                                     class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
                                     Join to bid on vehicles
@@ -431,19 +431,18 @@
                                 @if (Auth::user()->role == 'seller')
                                     <a href="{{ route('seller.index') }}" role="menuitem"
                                         class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
-                                        My Own Vehicles
+                                        Add Vehicles
                                     </a>
-                                    @else
-                                    <a href="{{ route('buyervehicles') }}" role="menuitem"
+                                    
+                                    
+                                @endif
+                                <a href="{{ route('buyervehicles') }}" role="menuitem"
                                     class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
                                     My Own Vehicles </a>
-                                @endif
-                                
                                 <a href="{{ route('vehicles') }}" role="menuitem"
                                     class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
                                     Join to bid on vehicles
                                 </a>
-
                                     
                                 </div>
                             </div>

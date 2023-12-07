@@ -12,96 +12,93 @@
 
 
 
-    
+
+    <div>
+
+        <h3>Filter</h3>
+
         <div>
 
-            <h3>Filter</h3>
-
-            <div>
-
-            </div>
         </div>
-        <div>
-            <form method="GET" action="{{ route('categery') }}">
-                @csrf
-                <div class="form-group"style="display: flex;justify-content:space-around">
-                    <div class="form-group">
-                        <label for="odometer">Odometer Range:</label>
-                        <input type="range" name="odometer" id="odometer" min="0" max="1000000" step="100"
-                            value="{{ request('odometer') }}">
-                        <span id="odometerValue">{{ request('odometer') }} miles</span>
-                    </div>
-                    <div class="form-group">
-                        <label for="make">Make:</label>
-                        <select name="make" id="make">
-                            <option value="">Any</option>
-                            <option value="toyota" {{ request('make') === 'toyota' ? 'selected' : '' }}>toyota</option>
-                            <option value="tesla" {{ request('make') === 'tesla' ? 'selected' : '' }}>tesla</option>
-                            <option value="golf" {{ request('make') === 'golf' ? 'selected' : '' }}>golf</option>
-                            <option value="ford" {{ request('make') === 'ford' ? 'selected' : '' }}>ford</option>
-                            <option value="kia" {{ request('make') === 'kia' ? 'selected' : '' }}>kia</option>
-                            <option value="hyundai" {{ request('make') === 'hyundai' ? 'selected' : '' }}>hyundai</option>
-                            <!-- Add more make options here -->
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="model">Model:</label>
-                        <select name="year" id="model">
-                            <option value="">Any</option>
-                            <option value="2018" {{ request('year') === '2018' ? 'selected' : '' }}>2018</option>
-                            <option value="2019" {{ request('year') === '2019' ? 'selected' : '' }}>2019</option>
-                            <option value="2020" {{ request('year') === '2020' ? 'selected' : '' }}>2020</option>
-                            <option value="2021" {{ request('year') === '2021' ? 'selected' : '' }}>2021</option>
-
-                            <!-- Add more model options here -->
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="color">Color:</label>
-                        <select name="color" id="color">
-                            <option value="">Any</option>
-                            <option value="red" {{ request('color') === 'red' ? 'selected' : '' }}>Red</option>
-                            <option value="white" {{ request('color') === 'white' ? 'selected' : '' }}>white</option>
-                            <option value="black" {{ request('color') === 'black' ? 'selected' : '' }}>black</option>
-                            <option value="blue" {{ request('color') === 'blue' ? 'selected' : '' }}>blue</option>
-                            <!-- Add more color options here -->
-                        </select>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary">Filter</button>
+    </div>
+    <div>
+        <form method="GET" action="{{ route('categery') }}">
+            @csrf
+            <div class="form-group"style="display: flex;justify-content:space-around">
+                <div class="form-group">
+                    <label for="odometer">Odometer Range:</label>
+                    <input type="range" name="odometer" id="odometer" min="0" max="1000000" step="100"
+                        value="{{ request('odometer') }}">
+                    <span id="odometerValue">{{ request('odometer') }} miles</span>
                 </div>
-            </form>
-        </div>
-       
-        <div class="result">
-            <table class="table table-striped">
+                <div class="form-group">
+                    <label for="make">Make:</label>
+                    <select name="make" id="make">
+                        <option value="">Any</option>
+                        <option value="toyota" {{ request('make') === 'toyota' ? 'selected' : '' }}>toyota</option>
+                        <option value="tesla" {{ request('make') === 'tesla' ? 'selected' : '' }}>tesla</option>
+                        <option value="golf" {{ request('make') === 'golf' ? 'selected' : '' }}>golf</option>
+                        <option value="ford" {{ request('make') === 'ford' ? 'selected' : '' }}>ford</option>
+                        <option value="kia" {{ request('make') === 'kia' ? 'selected' : '' }}>kia</option>
+                        <option value="hyundai" {{ request('make') === 'hyundai' ? 'selected' : '' }}>hyundai</option>
+                        <!-- Add more make options here -->
+                    </select>
+                </div>
 
-                <tr style="  border-bottom: 1px solid #080707;">
-                    <th><input type="checkbox" name="">image</th>
-                    <th>#Lot</th>
-                    <th>Make</th>
-                    <th>Year</th>
-                    <th>Model</th>
-                    <th>odometer</th>
-                    <th>Location</th>
-                    <th>Damage</th>
-                    <th>Current Bid</th>
+                <div class="form-group">
+                    <label for="model">Model:</label>
+                    <select name="year" id="model">
+                        <option value="">Any</option>
+                        <option value="2018" {{ request('year') === '2018' ? 'selected' : '' }}>2018</option>
+                        <option value="2019" {{ request('year') === '2019' ? 'selected' : '' }}>2019</option>
+                        <option value="2020" {{ request('year') === '2020' ? 'selected' : '' }}>2020</option>
+                        <option value="2021" {{ request('year') === '2021' ? 'selected' : '' }}>2021</option>
 
-                </tr>
- @foreach ($vehicles as $vehicle)
+                        <!-- Add more model options here -->
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="color">Color:</label>
+                    <select name="color" id="color">
+                        <option value="">Any</option>
+                        <option value="red" {{ request('color') === 'red' ? 'selected' : '' }}>Red</option>
+                        <option value="white" {{ request('color') === 'white' ? 'selected' : '' }}>white</option>
+                        <option value="black" {{ request('color') === 'black' ? 'selected' : '' }}>black</option>
+                        <option value="blue" {{ request('color') === 'blue' ? 'selected' : '' }}>blue</option>
+                        <!-- Add more color options here -->
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Filter</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="result">
+        <table class="table table-striped">
+
+            <tr style="  border-bottom: 1px solid #080707;">
+               
+                <th>#Lot</th>
+                <th>Make</th>
+                <th>Year</th>
+                <th>Model</th>
+                <th>odometer</th>
+                <th>Location</th>
+                <th>Damage</th>
+                <th>Current Bid</th>
+
+            </tr>
+            @foreach ($vehicles as $vehicle)
                 <tr>
-                    @foreach ($vehicle->images[0] as $vehicleimage )
+                  
                         
-                
-                    <td><img src="./{{$vehicleimage}}" alt="" width="80px"
-                            height="70px"></td> 
-                            
-                            @endforeach
+                  
                     <td>
                         <p>{{ $vehicle->id }}</p>
-                        <p><a href="#" class="watch"><img src="" alt="">Watch</a></p>
+                        <p> <a
+                                href="{{ route('subcategery', $vehicle->id) }}" class="link-content">View Details</a></p>
                     </td>
                     <td>{{ $vehicle->make }}</td>
                     <td>{{ $vehicle->year }}</td>
@@ -130,16 +127,16 @@
                     </td>
 
                 </tr>
- @endforeach
+            @endforeach
 
-            </table>
-        </div>
-        </div>
+        </table>
+    </div>
+    </div>
 
-        <div class="d-flex justify-content-center">
+    {{-- <div class="d-flex justify-content-center">
             {{ $vehicles->onEachSide(1)->links('pagination::bootstrap-4', ['show_prev_next' => true]) }}
-        </div>
-   
+        </div> --}}
+
 
     <script src="{{ url('/javascript/category.js') }}"></script>
     <script src="{{ url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js') }}"

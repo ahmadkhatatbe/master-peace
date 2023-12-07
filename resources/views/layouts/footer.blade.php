@@ -3,7 +3,7 @@
 
 <section class="section-four">
     <div class="left-side-footer">
-<h3>AUCTION<br>ELECTRIC VEHICLE</h3>
+<h3 style="font-size: 32px">MAZADI</h3>
     </div>
 
     <div class="links-footer">

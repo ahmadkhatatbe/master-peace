@@ -77,9 +77,7 @@ registration. </p>
     <div class="option"id="ebay">
        <img class="ebay" src="/images/paypalimage.png" alt="">
     </div>
-    <div class="option">
-        <img class="googlepay" id="googlepay"src="/images/cads.png" alt=""><span>pay</span>
-    </div>
+   
 
 </div>
 </div>

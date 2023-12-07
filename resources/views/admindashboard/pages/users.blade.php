@@ -48,7 +48,7 @@
                                             <td>{{ $user->email }}</td>
                                             <td>{{ $user->role }}</td>
                                             
-                                            <td><a class="btn btn-primary" href="{{ route('sellers') }}">Show</a>
+                                            {{-- <td><a class="btn btn-primary" href="{{ route('sellers') }}">Show</a> --}}
                                             </td>
                                             <td>
 

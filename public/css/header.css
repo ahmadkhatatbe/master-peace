@@ -82,8 +82,8 @@ font-size: 15px;
 .usermain{
   position: absolute;
   background-color: black;
-  height: 100px;
-  width: 150px;
+  height: 150px;
+  width: fit-content;
   right: 100px;
   font-weight: bold;
   display: none;
@@ -105,6 +105,10 @@ height: 40px;
 .formheader input:hover{
   color: black;
 background-color: #fac710;
+}
+.user form{
+  text-align: center;
+  width: 100%;
 }
 .user a{
   text-decoration: none;
@@ -298,7 +302,7 @@ font-size: 35px;
   font-size: 18px;
 }
 .mid {
-    display: none;
+    
  
 }
 .mid input {

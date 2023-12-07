@@ -192,7 +192,20 @@
     <!--////////////////////////////////////////////////End section-three///////////////////////////////  -->
 
     <script src="{{ url('/javascript/home.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    @if(session('success'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'You Won',
+            text: '{{ session('success') }}',
+        });
+    </script>
+@endif
    <script>
+ 
+
    var swiper = new Swiper('.swiper-container', {
         // Optional parameters
         loop: true, // Enable looping

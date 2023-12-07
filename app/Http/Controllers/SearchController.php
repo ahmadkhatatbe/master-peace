@@ -36,7 +36,7 @@ class SearchController extends Controller
         $title = $request->input('title');
 
         // Search logic
-        $query = Vehicle::query()->with('images');
+        $query = Vehicle::query();
 
         if ($search) {
             $query->where('make', 'LIKE', "%$search%")

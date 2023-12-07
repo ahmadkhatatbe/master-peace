@@ -36,9 +36,7 @@
 
                  <input type="submit" value="Sign In" class="btn-form"><br>
         </div>
-                 <span>or</span><br>
-                
- <button class="btn-gmail"> <img src="" alt="" srcset="">Continue with Gmail</button>
+              
                 </form>
 
         </div>

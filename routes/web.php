@@ -69,7 +69,7 @@ Route::get('categery', [SearchController::class, 'index'])->name('categery');
 Route::get('subcategery/{id}', [SearchController::class, 'single'])->name('subcategery');
 Route::post('subcategery/bid', [Controller::class, 'bid'])->name('bid');
 
-
+Route::post('/winner', [LiveAuction::class, 'winner'])->name('winner');
 Route::post('/livebid', [LiveAuction::class, 'livebidding'])->name('livebid');
 Route::get('/livebid/{vehicleId}', [LiveAuction::class, 'getlastbidder'])->name('getlivebid');
 
@@ -161,7 +161,7 @@ Route::prefix('admin')->middleware('IsAdmin')->group(function () {
     // Add users by use admin dashboard
     Route::resource('vehicle', VehicleController::class);
     Route::get('currentvehicles', [VehicleController::class, 'show'])->name('currentvehicles');
-    Route::get('sellers', [Controller::class, 'seller'])->name('sellers');
+    Route::get('winner', [Controller::class, 'winners'])->name('winners');
 
     // /////////((ADMIN))////(users, update users,delete users, ) //////////
     Route::resource('user', UsersController::class);
@@ -180,22 +180,6 @@ Route::prefix('admin')->middleware('IsAdmin')->group(function () {
 // //////////////////////////////////////////////////////////////////////
 
 
-
-
-
-
-
-
-
-
-
-
-// Route::get('sellers', function () {
-//     return view('admindashboard/pages/sellers');
-// })->name('sellers');
-
-
-/////////////////////// End Admin Dashboard Routes/////////////////
 
 
 

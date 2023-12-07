@@ -23,7 +23,7 @@
 
                     <div class="flex items-center justify-between p-4 border-b dark:border-primary">
 
-                        <div class=" col-12 " style="height: 300px">
+                        <div class=" col-12 " style="height: auto">
 
 
 

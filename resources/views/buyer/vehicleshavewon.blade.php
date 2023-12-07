@@ -17,14 +17,14 @@
 
 
             <!-- Charts -->
-            <div class="grid grid-cols-1 p-4 space-y-8 lg:gap-8 lg:space-y-0 lg:grid-cols-6">
+            <div class="grid grid-cols-1 p-4 space-y-8 lg:gap-8 lg:space-y-0 lg:grid-cols-6" style="margin-bottom:200px">
                 <!-- Bar chart card -->
-                <div class="col-span-2 bg-white rounded-md dark:bg-darker" x-data="{ isOn: false }">
+                <div class="col-span-2 bg-white rounded-md dark:bg-darker" x-data="{ isOn: false }" >
                     <!-- Card header -->
 
-                    <div class="flex items-center justify-between p-4 border-b dark:border-primary">
+                    <div class="flex items-center justify-between p-4 border-b dark:border-primary" >
 
-                        <div class=" col-12 " style="height: 300px">
+                        <div class=" col-12 " style="height: auto;">
 
 
 
@@ -56,15 +56,7 @@
                                             <td>{{ $vehicle->model }}</td>
                                             <td>{{ $vehicle->current_bid }}</td>
                                               <td>
-                                                <form action="{{route('join')}}" method="post">
-                                            @csrf
-                                            <input type="text" name='vehicle_id' value="{{$vehicle->id}}" hidden>
-                                            <input type="text" name='user_id' value="{{Auth::user()->id}}" hidden>
-                                            <input type="text" name='auction_id' value="{{$vehicle->auction_id}}" hidden>
-                                            <input type="submit" class="btn btn-primary w-full m-1" value="Join">
-
-                                            
-                                                 </form>
+                                                <button><a class="btn btn-primary w-full m-1" href="{{route('subcategery',$vehicle->id)}}">View</a></button>
                                         </td>
 
                                              

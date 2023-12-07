@@ -6,7 +6,7 @@ use App\Models\Auction;
 use App\Models\Image;
 use App\Models\Vehicle;
 use App\Models\User;
-use App\Models\Seller;
+use App\Models\AuctionParticipants;
 
 
 use Auth;
@@ -129,15 +129,16 @@ class SellerController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit($id)
-    {
+    { $auctions=Auction::get()->all();
         $vehicles = Vehicle::find($id);
-        return view('seller/sellerupdatevehicles', compact('vehicles'));
+        return view('seller/sellerupdatevehicles', compact('vehicles','auctions'));
     }
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, $id)
     {
+        $images = Image::find($id);
         $vehicles = Vehicle::find($id);
         $vehicles->user_id = $request->user_id;
         $vehicles->make = $request->make;
@@ -166,6 +167,9 @@ class SellerController extends Controller
      */
     public function destroy($id)
     {
+
+        AuctionParticipants::where('vehicle_id', $id)->delete();
+        Image::where('vehicle_id', $id)->delete();
         Vehicle::destroy($id);
 
         return redirect()->route('seller.index');

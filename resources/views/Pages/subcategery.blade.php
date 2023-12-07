@@ -280,8 +280,13 @@
                         <center><small>($100.00 USD Bid Increment)</small><br>
                           
                         </center>
-
-                        <input type="submit" class="bid-link" value="Bid">
+                        
+                        @if ($info->buyer_id!=null)
+                            <input class="bid-link" value="Vehicle Was Sold">
+                            @else
+                      <input type="submit" class="bid-link" value="Bid">
+                        @endif
+                        
                         </form>
                         <hr>
                         <h5>All bids are legally binding and all sales are final.</h5>

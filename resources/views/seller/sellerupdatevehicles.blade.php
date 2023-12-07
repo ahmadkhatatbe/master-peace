@@ -30,7 +30,7 @@
 
 
 
-                                        <form action="{{ route('seller.update', $vehicles->id) }}" method="post"
+                                        <form action="{{ route('seller.update', $vehicles->id) }}"  method="post"
                                             class=" col-12 ">
 
                                             @csrf
@@ -94,7 +94,7 @@
                                                 </div>
                                             </div>
                                             <div class="flex col-12 ">
-                                                <div class="form-group col-6 m-1">
+                                                <div class="form-group col-4 m-1">
                                                     <label for="Primary Damage">Primary Damage</label>
                                                     <select class="form-control" id="Primary Damage"
                                                         value="{{ $vehicles->primary_damage }}"
@@ -108,6 +108,7 @@
                                                     </select>
 
                                                 </div>
+                                           
                                                 <div class="form-group col-6 m-1">
                                                     <label for="secondarydamage">Secondary Damage</label>
                                                     <input type="text" class="form-control"
@@ -115,7 +116,8 @@
                                                         value="{{ $vehicles->secondary_damage }}"
                                                         placeholder=" Secondary Damage">
 
-                                                </div>
+                                                </div> 
+                                            </div>
 
                                             </div>
                                             <div class="flex col-12 ">
@@ -143,7 +145,35 @@
                                                         placeholder="Buy Now Price">
 
                                                 </div>
+                                                
                                             </div>
+                                            <div class="flex col-12 ">
+                                          <div class="form-group col-4 m-1">
+                                                    <label for="Primary Damage">Auction</label>
+                                                    <select class="form-control" id="Primary Damage"
+                                                        
+                                                        name="auction_id">
+                                                        @foreach ( $auctions as $auction )
+                                                            <option value="{{$auction->id}}">{{$auction->title}}</option>
+                                                        @endforeach
+                                                        
+                                                        
+
+                                                    </select>
+
+                                                </div>
+                                                <div class="form-group col-4 m-1">
+                                                    <label for="buynow">Target</label>
+                                                    <input type="number" class="form-control"
+                                                        id="exampleInputEmail1" name="target"
+                                                        value="{{ $vehicles->target }}"
+                                                        placeholder="Buy Now Price">
+
+                                                </div>
+                                                 
+                                            </div>
+
+
                                             <br>
                                             <button type="submit" class="btn btn-primary w-full m-1">Update</button>
                                         </form>

@@ -25,7 +25,7 @@
     }
 </style>
 @section('content')
-    <div class="container" style="width: 100%">
+    <div class="container" style="width: auto">
         <div class="content">
 
 
@@ -60,7 +60,7 @@
             </div>
 
             <!-- mid  -->
-            <div class="mid" style="margin-left: 110px;">
+            <div class="mid" style="">
                 <div class="sub-mid">
                     <h3>Vehicle Details</h3>
                     <hr>
@@ -143,23 +143,28 @@
                             <div style="text-align: center" id="latest-bidder">Bidder: Loading...</div>
                             <div style="text-align: center" id="Amount">CurrentPrice:Loading...</div>
                             <div style="text-align: center" id="seconds"> Loading...</div>
-
+                             <input id="numberbidder" type="text" name="id" value="" hidden>
+                             <input id="lastbidder" type="text" name="lastbidder" value="" hidden>
+                             <input id="vehicle_id" type="text" name="lastbidder" value="" hidden>
                         </div>
                     </div>
                     <div>
-                       
-                         
-                       <div style="display: flex;text-align:center;margin-left:100px; margin-top:10px;margin-bottom:10px">
-                        <div>
-                            <div id="pricevehicle" style="margin-right:10px;background:gray;padding:5px 10px 5px 10px"></div>
-                            <input type="text"  id="amountOfmybid" hidden>
-                            
 
+
+                        <div style="display: flex;text-align:center;margin-left:100px; margin-top:10px;margin-bottom:10px">
+                            <div>
+                                <div id="pricevehicle" style="margin-right:10px;background:gray;padding:5px 10px 5px 10px">
+                                </div>
+                                <input type="text" id="amountOfmybid" hidden>
+
+
+                            </div>
+                            <button id="decrease" value="100"
+                                style="padding: 5px 25px 5px 25px;margin-right:10px;border:none;border-radius:5px">--</button>
+
+                            <button id="increase" value="100"
+                                style="padding: 5px 25px 5px 25px;margin-right:10px;border:none;border-radius:5px">+</button>
                         </div>
-                        <button id="decrease" value="100" style="padding: 5px 25px 5px 25px;margin-right:10px;border:none;border-radius:5px">--</button>
-                        
-                         <button id="increase" value="100" style="padding: 5px 25px 5px 25px;margin-right:10px;border:none;border-radius:5px">+</button>
-</div>
                     </div>
                     <form id="livebidding">
                         @csrf
@@ -194,7 +199,7 @@
                 <div class="scroll-box">
                     @foreach ($vehicles as $vehicleGroupes)
                         @foreach ($vehicleGroupes as $vehicle)
-                            <table class="table" style="width: 400px;">
+                            <table class="table" >
                                 <thead>
                                     <tr>
                                         <th> </th>
@@ -257,35 +262,83 @@
                 prevEl: '.swiper-button-prev',
             },
         });
-///////////////////////////
- function startCountdown(duration) {
-      let enddata = new Date().getTime() + duration * 1000;
+        ///////////////////////////
+        function startCountdown(duration) {
+            let enddata = new Date().getTime() + duration * 1000;
 
-      let second = document.getElementById('second');
-      let seconds2 = document.getElementById('seconds');
+            let second = document.getElementById('second');
+            let seconds2 = document.getElementById('seconds');
+             let numberbidder = document.getElementById('numberbidder');
+            let lastbidder = document.getElementById('lastbidder');
+            let vehicle_id = document.getElementById('vehicle_id');
+            let sendAmount= document.getElementById('sendAmount');
+            let number=numberbidder.value;
+            let lastowner=lastbidder.value;
+            let vehicleid=vehicle_id.value;
+            let amount=sendAmount.value;
+            function updateCountdown() {
+                let now = new Date().getTime();
+                let distance = enddata - now;
 
-      function updateCountdown() {
-        let now = new Date().getTime();
-        let distance = enddata - now;
+                if (distance > 0) {
+                    let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                    second.style.strokeDashoffset = 450 - (450 * seconds) / duration;
+                    seconds2.innerHTML = seconds + " seconds";
+                } else {
+                    clearInterval(window.countdownInterval);
+                    // /////////////
+                               jQuery.ajax({
+                    url: "http://127.0.0.1:8000/winner",
+                    data: {
+                         _token: '{{ csrf_token() }}',
+                         id:number,
+                         owner:lastowner,
+                         idvehicle:vehicleid,
+                          price:amount
+                    },
+                    type: 'POST',
+                    success: function(result) {
+                        if (result.success === true) {
+Swal.fire({
+            icon: 'success',
+            title: 'You Won',
+            text: 'You Won In This Auction',
+        });
+     setTimeout(function () {
+                            window.location.href =
+                                `http://127.0.0.1:8000/${result.route}/${result.vehicle_id}`;
+                            }, 3000)}
+                        if (result.success === false) {
+Swal.fire({
+            icon: 'success',
+            title: 'You Won',
+            text: 'You Won In This Auction',
+        });
+    
+    // Delay the redirection by 3 seconds
+    setTimeout(function () {
+        window.location.href = `http://127.0.0.1:8000`;
+    }, 3000);
+}
 
-        if (distance > 0) {
-          let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-          second.style.strokeDashoffset = 450 - (450 * seconds) / duration;
-          seconds2.innerHTML = seconds + " seconds";
-        } else {
-          clearInterval(x);
-          console.log('Countdown complete!');
+
+                      
+                    }
+                });
+                    /////////////////
+
+                    console.log('Countdown complete!');
+                }
+            }
+
+            // Clear any existing interval before starting a new one
+            clearInterval(window.countdownInterval);
+
+            // Start the countdown interval
+            window.countdownInterval = setInterval(updateCountdown, 100);
         }
-      }
 
-      // Clear any existing interval before starting a new one
-      clearInterval(window.countdownInterval);
-
-      // Start the countdown interval
-      window.countdownInterval = setInterval(updateCountdown, 1000);
-    }
-
-//////////////////////////
+        //////////////////////////
         // end the counter
 
         $(document).ready(function() {
@@ -300,20 +353,39 @@
                     data: jQuery('#livebidding').serialize(),
                     type: 'POST',
                     success: function(result) {
-                          startCountdown(22);
+                        startCountdown(10);
 
                         $('#bider').css('display', 'block');
                         jQuery('#bider').html(result.bidder);
                         jQuery('#livebidding')[0].reset();
+                       
+                            // Check for 'home' route response
+    
+   
                         console.log(result.vehicle_id)
                         if (result.success === true) {
+Swal.fire({
+            icon: 'success',
+            title: 'You Won',
+            text: 'You Won In This Auction',
+        });
+     setTimeout(function () {
                             window.location.href =
                                 `http://127.0.0.1:8000/${result.route}/${result.vehicle_id}`;
-                        }
+                            }, 3000)}
                         if (result.success === false) {
-                            window.location.href = `http://127.0.0.1:8000`
+Swal.fire({
+            icon: 'success',
+            title: 'You Won',
+            text: 'You Won In This Auction',
+        });
+    
+    // Delay the redirection by 3 seconds
+    setTimeout(function () {
+        window.location.href = `http://127.0.0.1:8000`;
+    }, 3000);
+}
 
-                        }
 
                     }
                 });
@@ -327,6 +399,7 @@
                     url: "{{ route('getlivebid', $vehicleId) }}",
                     type: 'get',
                     success: function(result) {
+                         
                         var latestBid = result.latestBid;
                         var latestBidderName = latestBid.user.name;
                         var totalAmount = result.totalAmount;
@@ -335,9 +408,14 @@
                         $('#latest-bidder').text('Bidder:' + latestBidderName);
                         $('#Amount').text('Price:' + currentbid);
                         $('#amountOfmybid').val(currentbid);
-                    
-                    
-                        
+                        $('#lastbidder').val(latestBidderName);
+                        $('#numberbidder').val(latestBid.user.id);
+                         $('#vehicle_id').val(latestBid.vehicle_id);
+
+
+
+
+
                         var currentbid = $('#currentbid').val();
                         var sendAmount = $('#sendAmount').val(parseFloat($('#currentbid').val()) +
                             parseFloat(totalAmount));
@@ -353,10 +431,8 @@
             updateLatestBidder();
             setInterval(updateLatestBidder, 900); // Update every 10 seconds (adjust as needed)
 
-        });  
-        
-        
+        });
 
-
+    
     </script>
 @endsection

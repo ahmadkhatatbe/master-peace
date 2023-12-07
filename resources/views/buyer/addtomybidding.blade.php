@@ -14,14 +14,14 @@
 
 
             <!-- Charts -->
-            <div class="grid grid-cols-1 p-4 space-y-8 lg:gap-8 lg:space-y-0 lg:grid-cols-6">
+            <div class="grid grid-cols-1 p-4 space-y-8 lg:gap-8 lg:space-y-0 lg:grid-cols-6" style="margin-bottom:200px">
                 <!-- Bar chart card -->
                 <div class="col-span-2 bg-white rounded-md dark:bg-darker" x-data="{ isOn: false }">
                     <!-- Card header -->
 
-                    <div class="flex items-center justify-between p-4 border-b dark:border-primary">
+                    <div class="flex items-center justify-between p-4 border-b dark:border-primary" >
 
-                        <div class=" col-12 " style="height: 300px">
+                        <div class=" col-12 " style="height: auto;">
 
 
 
@@ -29,28 +29,44 @@
                                 <thead class="thead-dark">
                                     <tr>
                                         <th scope="col">#</th>
+                                        <th scope="col">image</th>
                                         <th scope="col">Make</th>
                                         <th scope="col">Model</th>
                                         <th scope="col">Current Bid</th>
-                                        <th scope="col">Update</th>
-                                        <th scope="col">Delete</th>
+                                           <th scope="col">action</th>
+
 
                                     </tr>
                                 </thead>
                                 <tbody>
 
-                                    @foreach ($Vehicles as $key => $vehicle)
+                                    @foreach ($Vehicles as  $vehicle)
                                         <tr>
                                             <th scope="row">{{ $vehicle->id }}</th>
-                                            @if (isset($image_vehicles[$key]) && $image_vehicles[$key])
-                                                <td> <img src="{{ asset($image_vehicles[$key]->filename) }}"
+                                             
+                                           
+                                                <td> <img src="{{ asset($vehicle->images[0]->filename) }}"
                                                         alt="Vehicle Image" width="100"></td>
-                                            @else
-                                                <td> No Image</td>
-                                            @endif
+                                          
+                                            
                                             <td>{{ $vehicle->make }}</td>
                                             <td>{{ $vehicle->model }}</td>
                                             <td>{{ $vehicle->current_bid }}</td>
+                                              <td>
+                                                <form action="{{route('join')}}" method="post">
+                                            @csrf
+                                            <input type="text" name='vehicle_id' value="{{$vehicle->id}}" hidden>
+                                            <input type="text" name='user_id' value="{{Auth::user()->id}}" hidden>
+                                            <input type="text" name='auction_id' value="{{$vehicle->auction_id}}" hidden>
+                                            <input type="submit" class="btn btn-primary w-full m-1" value="Join">
+
+                                            
+                                                 </form>
+                                        </td>
+
+                                             
+                                            </td>
+
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -63,6 +79,5 @@
 
                         </div>
                     </div>
-
     </main>
 @endsection

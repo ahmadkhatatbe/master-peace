@@ -65,6 +65,8 @@ class LiveAuction extends BaseController
             $buyer->buyer_id = $request->user_id;
             $buyer->price_was_bought = $request->sendAmount;
             $buyer->save();
+            $user = User::where('id', $request->user_id)->first();
+            $user->winner = 'yes';
             $bidders = Bid::where('vehicle_id', $request->vehicle_id)->get();
             foreach ($bidders as $bidder) {
                 $bidder->delete();
@@ -106,6 +108,45 @@ class LiveAuction extends BaseController
           
         }
     }
+
+    public function winner(Request $request)
+    { 
+        $buyer = Vehicle::where('id', $request->idvehicle)->first();
+        $buyer->buyer_id = $request->id;
+        $buyer->price_was_bought = $request->price;
+        $buyer->save();
+        $user = User::where('id', $request->id)->first();
+        $user->winner='yes';
+
+        $bidders = Bid::where('vehicle_id', $request->idvehicle)->get();
+        foreach ($bidders as $bidder) {
+            $bidder->delete();
+        }
+        $participants = AuctionParticipants::where('vehicle_id', $request->idvehicle)->get();
+        foreach ($participants as $participant) {
+            $participant->delete();
+        }
+        $stillparticipants = AuctionParticipants::where('user_id', $request->id)->get();
+
+        if ($stillparticipants->isNotEmpty()) {
+            return response()->json([
+                'success' => true,
+                'route' => 'auction',
+                'vehicle_id' => $stillparticipants[0]->vehicle_id,
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'route' => 'home',
+            ]);
+        }
+        
+       
+
+    }
+
+
+
 
     // get the last bidder
     public function getlastbidder($vehicleId)

@@ -145,7 +145,7 @@
                                 <!-- active & hover classes 'text-gray-700 dark:text-light' -->
                                 <!-- inActive classes 'text-gray-400 dark:text-gray-400' -->
 
-                                <a href="{{ route('sellers') }}" role="menuitem"
+                                <a href="{{ route('winners') }}" role="menuitem"
                                     class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700">
                                    Winners 
                                 </a>
@@ -293,10 +293,7 @@
                                     class="absolute right-0 w-48 py-1 bg-white rounded-md shadow-lg top-12 ring-1 ring-black ring-opacity-5 dark:bg-dark focus:outline-none"
                                     tabindex="-1" role="menu" aria-orientation="vertical"
                                     aria-label="User menu">
-                                    <a href="{{ route('sellers') }}" role="menuitem"
-                                        class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
-                                        Your Profile
-                                    </a>
+                                    
 
                                     <a href="{{ route('logoutadmin') }}" role="menuitem"
                                         class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
@@ -399,10 +396,7 @@
                                     x-transition:leave-end="translate-y-1/2 opacity-0" @click.away="open = false"
                                     class="absolute right-0 w-48 py-1 origin-top-right bg-white rounded-md shadow-lg top-12 ring-1 ring-black ring-opacity-5 dark:bg-dark"
                                     role="menu" aria-orientation="vertical" aria-label="User menu">
-                                    <a href="{{ route('sellers') }}" role="menuitem"
-                                        class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
-                                        Your Profile
-                                    </a>
+                                    
 
                                     <a href="{{ route('logoutadmin') }}" role="menuitem"
                                         class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
@@ -527,7 +521,7 @@
                                 <div x-show="open" class="mt-2 space-y-2 px-7" role="menu" arial-label="Pages">
                                     <!-- active & hover classes 'text-gray-700 dark:text-light' -->
                                     <!-- inActive classes 'text-gray-400 dark:text-gray-400' -->
-                                    <a href="{{ route('sellers') }}" role="menuitem"
+                                    <a href="{{ route('winners') }}" role="menuitem"
                                         class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700">
                                         Winners 
                                     </a>

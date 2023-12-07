@@ -53,7 +53,7 @@
                                                 </div>
                                                 <div class="form-group col-4 m-1">
                                                     <label for="make">Phone	</label>
-                                                    <input type="text" class="form-control"
+                                                    <input type="phone" class="form-control"
                                                         id="exampleInputEmail1" name="contact_phone	"
                                                         placeholder="Phone">
 

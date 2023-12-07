@@ -59,7 +59,7 @@ class VehicleController extends Controller
 
         $vehicle = Vehicle::Create([
             'make' => $request->make,
-            'user_id' =>1,
+            'user_id' =>Auth::user()->id,
             'year' => $request->year,
             'vin' => $request->vin,
             'title_code' => $request->title_code,

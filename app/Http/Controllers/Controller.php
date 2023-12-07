@@ -90,23 +90,13 @@ if($request->input('amount')>100){
 
     }
 
-// main Admin data about sellers
-
-    public function seller()
-    {
-        $users = User::get()->all();
-        $payments = Payment::get()->all();
-        $bids = Bid::get()->all();
-
-        return view('admindashboard/pages/winners', compact('users', 'payments','bids'));
-
-    }
+   
     // main Admin data about number of sellers and vehicles and auctions
 
     public function buyer()
     {
-        $Vehicles = Vehicle::where('buyer_id',Auth::user()->id)->get();
-        
+        $Vehicles = Vehicle::where('buyer_id',Auth::user()->id)->with('images')->get();
+     
 
         return view('buyer/vehicleshavewon', compact('Vehicles'));
 
@@ -114,8 +104,15 @@ if($request->input('amount')>100){
     public function vehicle()
     {
         $Vehicles = Vehicle::whereNull('buyer_id')->with('images')->get();
+      
+        return view('buyer/addtomybidding', compact('Vehicles'));
 
-        return view('buyer/vehicleshavewon', compact('Vehicles'));
+    }
+    public function winners()
+    { 
+        $users = User::whereNotNull('winner')->get()->all();
+      
+        return view('admindashboard/pages/winners', compact('users'));
 
     }
     public function join(Request $request)
@@ -137,7 +134,7 @@ public function update_seller(){
 return view('seller.updateacount');
 }
     public function account_updated(Request $request)
-    {
+    { 
         User::where('id',Auth::user()->id)->update([
             'contact_phone' => $request->contact_phone,
             'contact_address' => $request->contact_address,
